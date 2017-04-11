@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--自定义TopBar-->
+    <declare-styleable name="MyTopBar">
+        <!--左侧图标-->
+        <attr name="leftSrc" format="reference"></attr>
+        <!--标题-->
+        <attr name="titleText" format="string" />
+        <attr name="textColor" format="color"></attr>
+        <!--右侧文字-->
+        <attr name="rightBG" format="reference" />
+
+    </declare-styleable>
+</resources>

@@ -1,13 +1,273 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-
     xmlns:top="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <com.zykj.yixiu.widget.MyTopBar
+        android:id="@+id/headline"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        top:titleText="手机维修"
-        ></com.zykj.yixiu.widget.MyTopBar>
+        android:layout_height="30dp"
+        top:leftSrc="@mipmap/u312"
+        top:titleText="手机维修"></com.zykj.yixiu.widget.MyTopBar>
+
+    <include layout="@layout/main_line"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="品牌"
+            android:textColor="#6b6b6b"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/u94_line" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="right"
+            android:layout_marginRight="30dp"
+            android:id="@+id/MobileBrand"
+            android:text="请选择你的手机品牌"
+            android:textColor="#c9c9c9"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/u96" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        android:id="@+id/ll_type"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="类型"
+            android:textColor="#6b6b6b"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/u94_line" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="right"
+            android:layout_marginRight="30dp"
+            android:text="请选择你的家电类型"
+            android:id="@+id/appliancetype"
+            android:textColor="#c9c9c9"
+            android:textSize="20dp" />
+
+
+        <ImageView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/u96" />
+
+
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:src="@mipmap/u32" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="型号"
+            android:textColor="#6b6b6b"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/u94_line" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="right"
+            android:layout_marginRight="30dp"
+            android:text="请选择你的手机型号"
+            android:id="@+id/phonemodel"
+            android:textColor="#c9c9c9"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/u96" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:src="@mipmap/u32" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="故障"
+            android:textColor="#6b6b6b"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/u94_line" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="right"
+            android:layout_marginRight="30dp"
+            android:text="请选择你的手机故障点"
+            android:id="@+id/faultpoint"
+            android:textColor="#c9c9c9"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/malfunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/u96" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:src="@mipmap/u30_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/describe"
+            android:text="请对你的手机故障进行简单的描述"
+            android:textColor="#c9c9c9"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:src="@mipmap/u30_line" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:src="@mipmap/u32" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@mipmap/u123"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@mipmap/u130"
+                android:src="@mipmap/u132" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:src="@mipmap/u32"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:background="@mipmap/u2556"/>
 
 </LinearLayout>

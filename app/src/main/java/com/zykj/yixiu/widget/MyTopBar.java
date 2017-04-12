@@ -19,6 +19,7 @@ import com.zykj.yixiu.R;
 
 public class MyTopBar extends RelativeLayout {
     private Drawable leftSrc;
+    private Integer leftdown;
     private Drawable rightBG;
     private String titleText;
     private int textColor;
@@ -39,6 +40,7 @@ public class MyTopBar extends RelativeLayout {
    TypedArray td = context.obtainStyledAttributes(attrs, R.styleable.MyTopBar);
 
         // 获取属性
+        leftdown=td.getInteger(R.styleable.MyTopBar_leftdown,0);
         titleText = td.getString(R.styleable.MyTopBar_titleText);
         rightBG = td.getDrawable(R.styleable.MyTopBar_rightBG);
         leftSrc = td.getDrawable(R.styleable.MyTopBar_leftSrc);
@@ -60,6 +62,7 @@ public class MyTopBar extends RelativeLayout {
       right.setImageDrawable(rightBG);
         //left
         left.setImageDrawable(leftSrc);
+        left.setMaxHeight(leftdown);
 
         //加入并设置控件位置
         LayoutParams titleParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -78,6 +81,10 @@ public class MyTopBar extends RelativeLayout {
 
     }
 
+
+    public   void setTitleText(String  titleText){
+        title.setText(titleText);
+    }
     public MyTopBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }

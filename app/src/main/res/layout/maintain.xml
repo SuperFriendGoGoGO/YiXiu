@@ -216,13 +216,13 @@
         android:layout_height="80dp"
         android:background="#ffffff">
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:id="@+id/describe"
-            android:text="请对你的手机故障进行简单的描述"
-            android:textColor="#c9c9c9"
+            android:hint="请对你的手机故障进行简单的描述"
+           android:textColorHint="#c9c9c9"
             android:textSize="20dp" />
     </LinearLayout>
 
@@ -253,6 +253,7 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:id="@+id/picture"
                 android:background="@mipmap/u130"
                 android:src="@mipmap/u132" />
         </LinearLayout>
@@ -268,6 +269,7 @@
         android:text="确认"
         android:textColor="#ffffff"
         android:textSize="20dp"
+        android:id="@+id/transfer"
         android:background="@mipmap/u2556"/>
 
 </LinearLayout>

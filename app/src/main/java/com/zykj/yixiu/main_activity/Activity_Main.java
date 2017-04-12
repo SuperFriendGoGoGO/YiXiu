@@ -30,7 +30,7 @@ public class Activity_Main extends Activity {
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
     }
-
+//设置传入标识符 让——修理——页面识别
     @OnClick({R.id.mobile, R.id.computer, R.id.appliances})
     public void onClick(View view) {
         switch (view.getId()) {

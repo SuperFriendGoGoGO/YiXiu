@@ -47,7 +47,7 @@ public class AttendantCall extends Activity {
             case R.id.iv_address:
                 break;
             case R.id.bt_service:
-                if (etAddress.getText().toString().isEmpty()&&etServicetime.getText().toString().isEmpty())
+                if (!etAddress.getText().toString().isEmpty()&&!etServicetime.getText().toString().isEmpty())
                 {
                     LayoutInflater inflater = getLayoutInflater();
                     View layout = inflater.inflate(R.layout.tool_dialog,

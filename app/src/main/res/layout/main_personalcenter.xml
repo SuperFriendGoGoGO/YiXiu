@@ -78,6 +78,7 @@
         <FrameLayout
             android:layout_width="130dp"
             android:layout_height="60dp"
+            android:id="@+id/fl_undone"
             android:background="#00bdbd">
 
 
@@ -121,6 +122,7 @@
                 android:layout_width="130dp"
                 android:layout_height="60dp"
                 android:background="#00aeae"
+                android:id="@+id/ll_accomplish"
                 android:orientation="vertical">
 
                 <ImageView
@@ -148,6 +150,7 @@
                     android:layout_width="130dp"
                     android:layout_height="60dp"
                     android:background="#009999"
+                    android:id="@+id/abolish"
                     android:orientation="vertical">
 
                     <ImageView
@@ -207,11 +210,13 @@
             android:textSize="18dp"
             android:textColor="#bcbcbc"
             android:layout_marginLeft="10dp"/>
+
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="5dp"
-            android:src="@mipmap/u96"/>
+            android:src="@mipmap/u96"
+            android:id="@+id/iv_material" />
     </LinearLayout>
     <ImageView
         android:layout_width="match_parent"
@@ -241,6 +246,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginLeft="215dp"
+        android:id="@+id/wallet"
         android:src="@mipmap/u96"/>
 </LinearLayout>
 
@@ -270,7 +276,8 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="215dp"
-            android:src="@mipmap/u96"/>
+            android:src="@mipmap/u96"
+            android:id="@+id/address"/>
     </LinearLayout>
     <ImageView
         android:layout_width="match_parent"
@@ -302,12 +309,14 @@
             android:text="未认证"
             android:gravity="right"
             android:textSize="18dp"
+            android:id="@+id/tv_approve"
             android:textColor="#ffbb55"
             android:layout_marginLeft="10dp"/>
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="5dp"
+            android:id="@+id/iv_approve"
             android:src="@mipmap/u96"/>
     </LinearLayout>
     <ImageView
@@ -336,6 +345,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:id="@+id/iv_terrace"
             android:layout_marginLeft="215dp"
             android:src="@mipmap/u96"/>
     </LinearLayout>
@@ -364,6 +374,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:id="@+id/iv_about"
             android:layout_marginLeft="215dp"
             android:src="@mipmap/u96"/>
     </LinearLayout>
@@ -398,6 +409,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="250dp"
+            android:id="@+id/iv_set"
             android:src="@mipmap/u96"/>
     </LinearLayout>
 </LinearLayout>

@@ -13,7 +13,9 @@
                 <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
         </activity>
-        <activity android:name=".main_activity.Maintain"></activity>
+       <activity android:name=".main_activity.Maintain"></activity>
+        <activity android:name=".main_activity.PersonalCenter"></activity>
+        <activity android:name=".main_activity.AttendantCall"></activity>
     </application>
 
 

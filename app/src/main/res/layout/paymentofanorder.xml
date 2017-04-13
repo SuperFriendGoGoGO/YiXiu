@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:top="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zykj.yixiu.widget.MyTopBar
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        top:leftdown="@mipmap/u312"
+        top:titleText="订单支付"></com.zykj.yixiu.widget.MyTopBar>
+
+    <include layout="@layout/main_line"></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:background="@mipmap/u2225">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="种类  :"
+                android:layout_marginLeft="20dp"
+                android:textColor="#949494"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机"
+                android:layout_marginLeft="10dp"
+                android:textColor="#949494"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2017-10-10 13:00"
+                android:layout_marginLeft="100dp"
+                android:textColor="#949494"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f2f2f2"></View>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+           android:gravity="center"
+            android:text="600元"
+            android:textSize="30dp"/>
+
+    </LinearLayout>
+</LinearLayout>

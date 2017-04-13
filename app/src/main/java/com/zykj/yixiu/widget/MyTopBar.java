@@ -18,8 +18,8 @@ import com.zykj.yixiu.R;
  */
 
 public class MyTopBar extends RelativeLayout {
-    private Drawable leftSrc;
-    private Integer leftdown;
+    private String leftSrc;
+    private Drawable leftdown;
     private Drawable rightBG;
     private String titleText;
     private int textColor;
@@ -27,7 +27,7 @@ public class MyTopBar extends RelativeLayout {
 
     private TextView title;
     private ImageView right;
-    private ImageView left;
+    private TextView  left;
 
     public MyTopBar(Context context) {
         super(context);
@@ -40,16 +40,16 @@ public class MyTopBar extends RelativeLayout {
    TypedArray td = context.obtainStyledAttributes(attrs, R.styleable.MyTopBar);
 
         // 获取属性
-        leftdown=td.getInteger(R.styleable.MyTopBar_leftdown,0);
+        leftdown=td.getDrawable(R.styleable.MyTopBar_leftdown);
         titleText = td.getString(R.styleable.MyTopBar_titleText);
         rightBG = td.getDrawable(R.styleable.MyTopBar_rightBG);
-        leftSrc = td.getDrawable(R.styleable.MyTopBar_leftSrc);
+        leftSrc = td.getString(R.styleable.MyTopBar_leftSrc);
         textColor = td.getColor(R.styleable.MyTopBar_textColor, Color.parseColor("#7fe4e4"));
 
         //创建控件
         title = new TextView(context);
         right = new ImageView(context);
-        left = new ImageView(context);
+        left = new TextView(context);
 
         //把所有属性设置到对应控件上
         //title
@@ -61,9 +61,9 @@ public class MyTopBar extends RelativeLayout {
 
       right.setImageDrawable(rightBG);
         //left
-        left.setImageDrawable(leftSrc);
-        left.setMaxHeight(leftdown);
-
+        left.setText(leftSrc);
+        left.setBackgroundDrawable(leftdown);
+        left.setTextColor(Color.parseColor("#00cccc"));
         //加入并设置控件位置
         LayoutParams titleParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         titleParams.addRule(RelativeLayout.CENTER_IN_PARENT); //中间位置

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         top:titleText="呼叫服务"
-        top:leftSrc="@mipmap/u312"></com.zykj.yixiu.widget.MyTopBar>
+       top:leftdown="@mipmap/u312"></com.zykj.yixiu.widget.MyTopBar>
 <include layout="@layout/main_line"></include>
    <LinearLayout
        android:layout_width="match_parent"

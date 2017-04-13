@@ -10,7 +10,7 @@
         android:id="@+id/headline"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        top:leftSrc="@mipmap/u312"
+        top:leftdown="@mipmap/u312"
         top:titleText="手机维修"></com.zykj.yixiu.widget.MyTopBar>
 
     <include layout="@layout/main_line"></include>
@@ -37,17 +37,17 @@
             android:layout_marginLeft="20dp"
             android:src="@mipmap/u94_line" />
 
-        <TextView
+        <EditText
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:gravity="right"
             android:layout_marginRight="30dp"
             android:id="@+id/MobileBrand"
-            android:text="请选择你的手机品牌"
-            android:textColor="#c9c9c9"
-            android:textSize="20dp" />
+            android:hint="请选择你的手机品牌"
+            android:textColorHint="#c9c9c9"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/brand"
@@ -82,17 +82,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:src="@mipmap/u94_line" />
-        <TextView
+        <EditText
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:gravity="right"
             android:layout_marginRight="30dp"
-            android:text="请选择你的家电类型"
+            android:hint="请选择你的家电类型"
             android:id="@+id/appliancetype"
             android:textColor="#c9c9c9"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
 
         <ImageView
@@ -134,17 +134,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:src="@mipmap/u94_line" />
-        <TextView
+        <EditText
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:gravity="right"
             android:layout_marginRight="30dp"
-            android:text="请选择你的手机型号"
+            android:hint="请选择你的手机型号"
             android:id="@+id/phonemodel"
-            android:textColor="#c9c9c9"
-            android:textSize="20dp" />
+            android:textColorHint="#c9c9c9"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/model"
@@ -183,17 +183,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:src="@mipmap/u94_line" />
-        <TextView
+        <EditText
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:gravity="right"
             android:layout_marginRight="30dp"
-            android:text="请选择你的手机故障点"
+            android:hint="请选择你的手机故障点"
             android:id="@+id/faultpoint"
-            android:textColor="#c9c9c9"
-            android:textSize="20dp" />
+            android:textColorHint="#c9c9c9"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/malfunction"

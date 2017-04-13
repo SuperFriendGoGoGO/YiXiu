@@ -9,7 +9,7 @@
         android:layout_height="50dp"
         android:background="#ffffff"
         android:padding="5dp"
-       top:leftSrc="@mipmap/heb"
+     top:leftSrc="哈尔滨"
         top:titleText="一休哥"
         top:textColor="#00cccc"
         top:rightBG="@mipmap/u74"></com.zykj.yixiu.widget.MyTopBar>

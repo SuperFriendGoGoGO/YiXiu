@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.widget.MyTopBar;
@@ -21,27 +22,27 @@ import butterknife.OnClick;
  * Created by zykj on 2017/4/12.
  */
 
-class Maintain extends Activity {
+public class Maintain extends Activity {
 
 
     @Bind(R.id.headline)
     MyTopBar headline;
     @Bind(R.id.MobileBrand)
-    EditText MobileBrand;
+    TextView MobileBrand;
     @Bind(R.id.brand)
     ImageView brand;
     @Bind(R.id.appliancetype)
-    EditText appliancetype;
+    TextView appliancetype;
     @Bind(R.id.type)
     ImageView type;
     @Bind(R.id.ll_type)
     LinearLayout llType;
     @Bind(R.id.phonemodel)
-    EditText phonemodel;
+    TextView phonemodel;
     @Bind(R.id.model)
     ImageView model;
     @Bind(R.id.faultpoint)
-    EditText faultpoint;
+    TextView faultpoint;
     @Bind(R.id.malfunction)
     ImageView malfunction;
     @Bind(R.id.describe)
@@ -67,24 +68,24 @@ class Maintain extends Activity {
             //改变文字 文字颜色
             headline.setTitleText("电脑维修");
             llType.setVisibility(View.VISIBLE);
-            MobileBrand.setHint("联想");
-            MobileBrand.setHintTextColor(Color.parseColor("#00cccc"));
-            appliancetype.setHint("笔记本");
+            MobileBrand.setText("联想");
+            MobileBrand.setTextColor(Color.parseColor("#00cccc"));
+            appliancetype.setText("笔记本");
             appliancetype.setHintTextColor(Color.parseColor("#00cccc"));
-            phonemodel.setHint("Y460A-ITH");
-            phonemodel.setHintTextColor(Color.parseColor("#00cccc"));
+            phonemodel.setText("Y460A-ITH");
+            phonemodel.setTextColor(Color.parseColor("#00cccc"));
             faultpoint.setText("主板");
-            faultpoint.setHintTextColor(Color.parseColor("#00cccc"));
-            describe.setHint("开机进不去系统，黑屏白字");
+            faultpoint.setTextColor(Color.parseColor("#00cccc"));
+            describe.setText("开机进不去系统，黑屏白字");
         } else if ("3".equals(mark)) {
             //改变文字
             headline.setTitleText("家电维修");
             llType.setVisibility(View.VISIBLE);
-            MobileBrand.setHint("请选择你的家电品牌");
-            appliancetype.setHint("请选择你的家电类型");
-            phonemodel.setHint("请选择你的家电型号");
-            faultpoint.setHint("请选择你的家电故障点");
-            describe.setHint("请对你的家电故障进行简单的描述");
+            MobileBrand.setText("请选择你的家电品牌");
+            appliancetype.setText("请选择你的家电类型");
+            phonemodel.setText("请选择你的家电型号");
+            faultpoint.setText("请选择你的家电故障点");
+            describe.setText("请对你的家电故障进行简单的描述");
         }
 
     }
@@ -104,12 +105,11 @@ class Maintain extends Activity {
             case R.id.picture:
                 break;
             case R.id.transfer:
-                if (MobileBrand.getText().toString().isEmpty() && appliancetype.getText().toString().isEmpty() && phonemodel.getText().toString().isEmpty() && faultpoint.getText().toString().isEmpty() && describe.getText().toString().isEmpty())
-                {
-                    Intent intent=new Intent(this,AttendantCall.class);
+                if (!MobileBrand.getText().toString().isEmpty() && !appliancetype.getText().toString().isEmpty() && !phonemodel.getText().toString().isEmpty() && !faultpoint.getText().toString().isEmpty() && !describe.getText().toString().isEmpty()) {
+                    Intent intent = new Intent(this, AttendantCall.class);
                     startActivity(intent);
                 }
-                    break;
+                break;
         }
     }
 }

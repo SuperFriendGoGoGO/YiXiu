@@ -10,7 +10,7 @@
         android:layout_height="30dp"
         top:titleText="呼叫服务"
        top:leftdown="@mipmap/u312"></com.zykj.yixiu.widget.MyTopBar>
-<include layout="@layout/main_line"></include>
+<include layout="@layout/tool_line"></include>
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="50dp"
@@ -37,10 +37,12 @@
            android:hint="请选择你的服务时间"
            android:textSize="17dp"
            android:gravity="right"
+           android:id="@+id/et_servicetime"
            android:textColorHint="#c4c4c4"/>
        <ImageView
            android:layout_width="30dp"
            android:layout_height="30dp"
+           android:id="@+id/im_servicetime"
            android:layout_marginTop="10dp"
            android:layout_marginLeft="30dp"
            android:src="@mipmap/u96"/>
@@ -75,12 +77,14 @@
             android:hint="请选择你的服务地址"
             android:textSize="17dp"
             android:gravity="right"
+            android:id="@+id/et_address"
             android:textColorHint="#c4c4c4"/>
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
+            android:id="@+id/iv_address"
             android:src="@mipmap/u96"/>
     </LinearLayout>
     <ImageView
@@ -94,5 +98,6 @@
         android:textSize="20dp"
         android:textColor="#ffffff"
         android:text="确认"
+        android:id="@+id/bt_service"
         android:background="@mipmap/u2556"/>
 </LinearLayout>

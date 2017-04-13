@@ -13,7 +13,7 @@
         top:titleText="一休哥"
         top:textColor="#00cccc"
         top:rightBG="@mipmap/u74"></com.zykj.yixiu.widget.MyTopBar>
-    <include layout="@layout/main_line"></include>
+    <include layout="@layout/tool_line"></include>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="147dp"

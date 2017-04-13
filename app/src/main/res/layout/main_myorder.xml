@@ -12,7 +12,7 @@
         android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="30dp"></com.zykj.yixiu.widget.MyTopBar>
-<include layout="@layout/main_line"></include>
+<include layout="@layout/tool_line"></include>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="5dp"

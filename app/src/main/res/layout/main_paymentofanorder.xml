@@ -11,7 +11,7 @@
         top:leftdown="@mipmap/u312"
         top:titleText="订单支付"></com.zykj.yixiu.widget.MyTopBar>
 
-    <include layout="@layout/main_line"></include>
+    <include layout="@layout/tool_line"></include>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"

@@ -10,13 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.bigkoo.pickerview.TimePickerView;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.widget.MyTopBar;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -60,7 +55,7 @@ class Maintain extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.maintain);
+        setContentView(R.layout.main_maintain);
         ButterKnife.bind(this);
         Intent intent = getIntent();
         //获取首页传来的标示符
@@ -94,8 +89,8 @@ class Maintain extends Activity {
 
     }
 
-    //摩托罗拉 诺基亚 三星 波导 索尼 爱立信  阿尔卡特 熊猫 海尔 康佳 科健  飞利浦 海信  创维 CECT 金立 长虹  LG NEC 西门子 联想 天时达 夏普  酷派  大显 明基 中兴 华为  步步高 奥克斯 都宝 桑达 唯开 金鹏 德赛 万利达 宝石 天阔  东信 中桥 TCL天语 OPPO 南方高科 多普达 迪比特 苹果
-    @OnClick({R.id.brand, R.id.type, R.id.model, R.id.malfunction, R.id.picture})
+
+    @OnClick({R.id.brand, R.id.type, R.id.model, R.id.malfunction, R.id.picture, R.id.transfer})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.brand:
@@ -108,6 +103,13 @@ class Maintain extends Activity {
                 break;
             case R.id.picture:
                 break;
+            case R.id.transfer:
+                if (MobileBrand.getText().toString().isEmpty() && appliancetype.getText().toString().isEmpty() && phonemodel.getText().toString().isEmpty() && faultpoint.getText().toString().isEmpty() && describe.getText().toString().isEmpty())
+                {
+                    Intent intent=new Intent(this,AttendantCall.class);
+                    startActivity(intent);
+                }
+                    break;
         }
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:top="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+    <com.zykj.yixiu.widget.MyTopBar
+        top:leftdown="@mipmap/u312"
+        top:titleText="订单详情"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"></com.zykj.yixiu.widget.MyTopBar>
+    <include layout="@layout/main_line"></include>
+</LinearLayout>

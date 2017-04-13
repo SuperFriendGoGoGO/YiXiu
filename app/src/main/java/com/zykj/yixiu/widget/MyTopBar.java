@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -62,6 +63,7 @@ public class MyTopBar extends RelativeLayout {
       right.setImageDrawable(rightBG);
         //left
         left.setText(leftSrc);
+        left.setGravity(CENTER_VERTICAL);
         left.setBackgroundDrawable(leftdown);
         left.setTextColor(Color.parseColor("#00cccc"));
         //加入并设置控件位置

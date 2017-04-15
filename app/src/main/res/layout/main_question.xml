@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:top="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zykj.yixiu.widget.MyTopBar
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="10dp"
+        top:leftdown="@mipmap/u312"
+        top:titleText="常见问题"></com.zykj.yixiu.widget.MyTopBar>
+
+    <include layout="@layout/tool_line"></include>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="5dp"
+       android:gravity="center_vertical"
+       android:orientation="horizontal">
+       <LinearLayout
+           android:layout_width="40dp"
+           android:layout_height="40dp"
+           android:layout_marginLeft="20dp"
+           android:background="@mipmap/u1439">
+           <ImageView
+               android:layout_width="30dp"
+               android:layout_marginLeft="5dp"
+               android:layout_height="30dp"
+               android:src="@mipmap/u1443" />
+       </LinearLayout>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="20dp"
+           android:text="常见问题"
+           android:textColor="#6d6d6d"
+           android:textSize="18dp" />
+
+
+   </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
+        android:background="#f2f2f2"></View>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#aeaeae"
+        android:textSize="20sp"
+        android:text="NOKIA的开机后反复白屏重启，或者某个功能进不去等，这一类的故障是软件的问题。
+国产机MTk系列，不断提示充电器链接，充电器移除时CPU虚焊。
+    "
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="20sp"
+        android:text="维修方法：软件故障就刷机，硬件故障
+                    就修硬件，用电源夹上看手
+                    机电流."/>
+   </LinearLayout>

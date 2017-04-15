@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:top="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.zykj.yixiu.widget.MyTopBar
+        top:leftdown="@mipmap/u312"
+        top:titleText="一休哥资讯"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="10dp"></com.zykj.yixiu.widget.MyTopBar>
+
+    <include layout="@layout/tool_line"></include>
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:text="12:30"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:background="@mipmap/u1655"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="@mipmap/u1467"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="270dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:src="@mipmap/u1469"
+            android:scaleType="centerCrop"
+            android:layout_height="100dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
+            <TextView
+               android:layout_width="230dp"
+                android:layout_height="40dp"
+                android:textSize="15dp"
+                android:textColor="#6d6d6d"
+                android:lineSpacingExtra="3dp"
+                android:text="手机为什么会黑屏，教你手机的保养技巧"/>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/u1476"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:background="#f2f2f2"></View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
+            <TextView
+                android:layout_width="240dp"
+                android:layout_height="40dp"
+                android:textSize="15dp"
+                android:textColor="#6d6d6d"
+                android:lineSpacingExtra="3dp"
+                android:text="家电坏了怎么办，我们在家里用家电应该注意什么"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:background="#f2f2f2"></View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
+            <TextView
+                android:layout_width="230dp"
+                android:layout_height="40dp"
+                android:textSize="15dp"
+                android:textColor="#6d6d6d"
+                android:lineSpacingExtra="3dp"
+                android:text="三个品牌的手机，你知道哪个容易死机，你中招了么"/>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/u1480"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

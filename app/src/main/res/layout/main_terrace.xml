@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:top="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zykj.yixiu.widget.MyTopBar
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="10dp"
+        top:leftdown="@mipmap/u312"
+        top:titleText="平台服务"></com.zykj.yixiu.widget.MyTopBar>
+
+    <include layout="@layout/tool_line"></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/u1437" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="一休哥资讯"
+            android:textColor="#6d6d6d"
+            android:textSize="18dp" />
+       <LinearLayout
+           android:layout_width="20dp"
+           android:layout_height="20dp"
+           android:layout_marginLeft="120dp"
+           android:background="@mipmap/u688">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="5"
+               android:textColor="#ffffff"
+               android:layout_marginLeft="6dp"/>
+       </LinearLayout>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/u96" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:background="@mipmap/u1439">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/u1443" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="常见问题"
+            android:textColor="#6d6d6d"
+            android:textSize="18dp" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="175dp"
+            android:src="@mipmap/u96" />
+    </LinearLayout>
+</LinearLayout>

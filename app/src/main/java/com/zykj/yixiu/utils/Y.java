@@ -36,6 +36,9 @@ public class Y {
     public static String getData(String  result){//成功获取数据
         return JSON.parseObject(result).getString("data");
     }
+    public static Callback.Cancelable get(RequestParams params, MyCommonCall<String> call){
+        return   x.http().get(params, call);
+    }
     public static Callback.Cancelable post(RequestParams params, MyCommonCall<String> call){
         return   x.http().post(params, call);
     }

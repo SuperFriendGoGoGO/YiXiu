@@ -82,7 +82,10 @@ public class MyTopBar extends RelativeLayout {
 
 
     }
-
+    public String getTitleText(){
+        title.getText();
+        return null;
+    }
 
     public   void setTitleText(String  titleText){
         title.setText(titleText);

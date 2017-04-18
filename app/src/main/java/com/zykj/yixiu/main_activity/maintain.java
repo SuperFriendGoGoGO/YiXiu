@@ -56,7 +56,7 @@ public class Maintain extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_maintain);
+        setContentView(R.layout.activity_maintain);
         ButterKnife.bind(this);
         Intent intent = getIntent();
         //获取首页传来的标示符

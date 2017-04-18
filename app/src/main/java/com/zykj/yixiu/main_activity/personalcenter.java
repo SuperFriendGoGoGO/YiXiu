@@ -51,7 +51,7 @@ public class PersonalCenter extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_personalcenter);
+        setContentView(R.layout.activity_personalcenter);
         ButterKnife.bind(this);
 
     }

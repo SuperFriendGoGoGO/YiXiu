@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/u2544"
+    android:gravity="center"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/iv_head"
+        android:src="@mipmap/u2550"/>
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:hint="请输入你的用户名"
+        android:id="@+id/et_user"
+        android:background="@mipmap/u2548"
+    android:textColorHint="#ffffff"
+        android:textSize="15dp" />
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:hint="请输入你的密码"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/u2548"
+        android:id="@+id/et_password"
+        android:textColorHint="#ffffff"
+        android:textSize="15dp" />
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:text="确认"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@mipmap/u2556"
+        android:layout_marginTop="20dp"
+        android:id="@+id/bt_ensure" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册"
+            android:id="@+id/tv_login"
+            android:textColor="#ffffff"
+            android:textSize="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:textSize="15dp"
+            android:textColor="#ffffff"
+            android:id="@+id/tv_forget"
+            android:layout_marginLeft="100dp"
+            android:text="忘记密码"/>
+    </LinearLayout>
+</LinearLayout>

@@ -47,6 +47,8 @@ public class Login extends Activity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_yzm:
+                Intent intent3=new Intent(this,Activity_Main.class);
+                startActivity(intent3);
                 break;
             case R.id.button:
                String title= mytopbar.getTitleText();

@@ -11,6 +11,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <!--百度地图 结束-->
+    <!--GalleryFinal图片选择器 开始-->
+    <uses-permission android:name="WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+    <!--GalleryFinal图片选择器 结束-->
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

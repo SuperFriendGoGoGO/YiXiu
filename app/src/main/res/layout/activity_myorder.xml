@@ -28,6 +28,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="40dp"
             android:text="未完成"
+            android:id="@+id/tv_wei"
             android:textSize="20dp"
             android:layout_marginTop="5dp"
             android:textColor="#00cccc"/>
@@ -42,6 +43,7 @@
             android:layout_marginLeft="40dp"
             android:text="已完成"
             android:textSize="20dp"
+            android:id="@+id/tv_yi"
             android:layout_marginTop="5dp"
             android:textColor="#6b6b6b"/>
         <ImageView
@@ -54,6 +56,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="40dp"
             android:text="已取消"
+            android:id="@+id/tv_quxiao"
             android:textSize="20dp"
             android:layout_marginTop="5dp"
             android:textColor="#6b6b6b"/>
@@ -66,14 +69,17 @@
         <ImageView
             android:layout_width="130dp"
             android:layout_height="3dp"
+            android:id="@+id/iv_wei"
             android:src="@mipmap/u15_line"/>
         <ImageView
             android:layout_width="130dp"
             android:layout_height="3dp"
+            android:id="@+id/iv_yi"
             android:src="@mipmap/u30_line"/>
         <ImageView
             android:layout_width="130dp"
             android:layout_height="3dp"
+            android:id="@+id/iv_quxiqao"
             android:src="@mipmap/u30_line"/>
     </LinearLayout>
     <ImageView
@@ -112,6 +118,7 @@
                 android:layout_height="30dp"
                 android:text="已接单"
                 android:textSize="18dp"
+                android:id="@+id/tv_jiedan"
                 android:layout_marginLeft="200dp"
                 android:textColor="#ff9900"/>
         </LinearLayout>
@@ -211,18 +218,23 @@
             android:layout_marginTop="2dp"
             android:gravity="right"
             android:orientation="horizontal">
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="查看详情"
+                android:id="@+id/bt_chakan1"
                 android:textColor="#6a6a6a"
-                android:background="@mipmap/u797"/>
+                android:background="@mipmap/u797"
+                />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="取消订单"
                 android:layout_marginLeft="10dp"
                 android:textColor="#6a6a6a"
+                android:id="@+id/bt_quxiao1"
                 android:layout_marginRight="10dp"
                 android:background="@mipmap/u797"/>
         </LinearLayout>
@@ -360,16 +372,24 @@
             android:layout_marginTop="2dp"
             android:gravity="right"
             android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:id="@+id/tv_time"
+                android:text="00:12:00"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="重新发送"
+                android:id="@+id/bt_chongfa"
                 android:textColor="#6a6a6a"
                 android:background="@mipmap/u797"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="查看详情"
+                android:id="@+id/bt_chakan2"
                 android:layout_marginLeft="10dp"
                 android:textColor="#6a6a6a"
                 android:background="@mipmap/u797"/>
@@ -382,7 +402,7 @@
                 android:textColor="#6a6a6a"
                 android:background="@mipmap/u797"
                 android:layout_marginRight="10dp"
-                android:id="@+id/button2" />
+                android:id="@+id/bt_quxiao2" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

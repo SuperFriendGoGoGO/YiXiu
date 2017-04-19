@@ -1,6 +1,7 @@
 package com.zykj.yixiu.main_activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +9,17 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
+import com.youth.banner.loader.ImageLoader;
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.app.MyApp;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -55,7 +65,27 @@ public class Activity_Main extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
-        
+        List list = new ArrayList();
+        for (int i = 0; i < 100; i++) {
+            list.add(R.mipmap.u1058);
+        }
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+//        设置图片加载器
+        banner.setImageLoader(new GlideImageLoader());
+//        设置图片集合
+        banner.setImages(list);
+//        设置banner动画效果
+        banner.setBannerAnimation(Transformer.DepthPage);
+//        设置自动轮播
+        banner.isAutoPlay(true);
+//        轮播时间
+        banner.setDelayTime(2500);
+//        设置指示器位置
+        banner.setIndicatorGravity(BannerConfig.CENTER);
+//        设置方法全部完毕时调用
+        banner.start();
+
+
     }
 
     //设置传入标识符 让——修理——页面识别
@@ -81,4 +111,14 @@ public class Activity_Main extends Activity {
     }
 
 
+}
+
+class GlideImageLoader extends ImageLoader {
+    @Override
+    public void displayImage(Context context, Object path, ImageView imageView) {
+        Glide.with(context)
+                .load(path)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(imageView);
+    }
 }

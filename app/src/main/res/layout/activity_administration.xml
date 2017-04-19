@@ -7,8 +7,9 @@
 
     <com.zykj.yixiu.widget.MyTopBar
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="28dp"
         top:leftdown="@mipmap/u312"
+        android:layout_margin="10dp"
         top:titleText="地址管理"></com.zykj.yixiu.widget.MyTopBar>
 
     <include layout="@layout/tool_line"></include>

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -28,12 +30,13 @@ public class MyTopBar extends RelativeLayout {
 
     private TextView title;
     private ImageView right;
-    private TextView  left;
+    private ImageView  left;
 
     public MyTopBar(Context context) {
         super(context);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public MyTopBar(Context context, AttributeSet attrs) {
         super(context, attrs);
 
@@ -50,7 +53,7 @@ public class MyTopBar extends RelativeLayout {
         //创建控件
         title = new TextView(context);
         right = new ImageView(context);
-        left = new TextView(context);
+        left = new ImageView(context);
 
         //把所有属性设置到对应控件上
         //title
@@ -62,10 +65,10 @@ public class MyTopBar extends RelativeLayout {
 
       right.setImageDrawable(rightBG);
         //left
-        left.setText(leftSrc);
-        left.setGravity(CENTER_VERTICAL);
-        left.setBackgroundDrawable(leftdown);
-        left.setTextColor(Color.parseColor("#00cccc"));
+
+
+        left.setImageDrawable(leftdown);
+
         //加入并设置控件位置
         LayoutParams titleParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         titleParams.addRule(RelativeLayout.CENTER_IN_PARENT); //中间位置

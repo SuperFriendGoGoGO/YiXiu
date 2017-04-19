@@ -9,7 +9,8 @@
 
     <com.zykj.yixiu.widget.MyTopBar
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="48dp"
+       android:padding="10dp"
         android:background="#ffffff"
         top:leftdown="@mipmap/u312"
         top:titleText="关于我们"></com.zykj.yixiu.widget.MyTopBar>
@@ -17,7 +18,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#ffffff"></View>
+        android:background="#ffffff"
+        ></View>
 
     <include layout="@layout/tool_line"></include>
     <ImageView

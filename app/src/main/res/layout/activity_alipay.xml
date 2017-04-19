@@ -8,6 +8,7 @@
     <com.zykj.yixiu.widget.MyTopBar
         top:leftdown="@mipmap/u312"
         top:titleText="添加银行卡"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="30dp"></com.zykj.yixiu.widget.MyTopBar>
 

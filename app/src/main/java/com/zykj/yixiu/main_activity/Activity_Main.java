@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.youth.banner.Banner;
 import com.zykj.yixiu.R;
 
 import butterknife.Bind;
@@ -46,12 +47,15 @@ public class Activity_Main extends Activity {
     TextView appliance;
     @Bind(R.id.appliances)
     ImageView appliances;
+    @Bind(R.id.banner)
+    Banner banner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
+        
     }
 
     //设置传入标识符 让——修理——页面识别

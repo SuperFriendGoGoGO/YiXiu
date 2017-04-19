@@ -14,16 +14,13 @@
         top:textColor="#00cccc"
         top:rightBG="@mipmap/u74"></com.zykj.yixiu.widget.MyTopBar>
     <include layout="@layout/tool_line"></include>
+
     <com.youth.banner.Banner
         android:layout_width="match_parent"
         android:id="@+id/banner"
         android:layout_height="147dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="147dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/zhuye"/>
     </com.youth.banner.Banner>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="2dp"

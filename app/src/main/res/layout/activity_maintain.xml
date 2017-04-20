@@ -16,7 +16,7 @@
     <include layout="@layout/tool_line"></include>
 
     <LinearLayout
-        android:id="@+id/brand"
+        android:id="@+id/ll_brand"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
@@ -99,7 +99,7 @@
 
 
         <ImageView
-            android:id="@+id/type"
+            android:id="@+id/iv_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
@@ -116,7 +116,7 @@
         android:src="@mipmap/u32" />
 
     <LinearLayout
-        android:id="@+id/model"
+        android:id="@+id/ll_model"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
@@ -167,7 +167,7 @@
         android:src="@mipmap/u32" />
 
     <LinearLayout
-        android:id="@+id/malfunction"
+        android:id="@+id/ll_malfunction"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"

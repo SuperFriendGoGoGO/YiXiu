@@ -27,10 +27,7 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         Y.context=this;
-
         x.Ext.init(this);
 
-        ThemeConfig themeConfig  =new  ThemeConfig.Builder().build();
-        FunctionConfig functionConfig =new FunctionConfig.Builder().build();
     }
 }

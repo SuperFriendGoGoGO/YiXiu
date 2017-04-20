@@ -2,6 +2,7 @@ package com.zykj.yixiu.main_activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
@@ -18,9 +19,13 @@ import com.zykj.yixiu.R;
 import java.util.Calendar;
 import java.util.Date;
 
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static cn.finalteam.toolsfinal.DateUtils.getTime;
+
 
 /**
  * Created by zykj on 2017/4/13.
@@ -73,7 +78,7 @@ public class AttendantCall extends Activity {
                 TimePickerView pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
                     @Override
                     public void onTimeSelect(Date date, View v) {//选中事件回调
-                      // tvServicetime.setText();
+                       tvServicetime.setText(getTime(date));
                     }
                 })
                         .build();
@@ -81,6 +86,8 @@ public class AttendantCall extends Activity {
                 pvTime.show();
                 break;
             case R.id.ll_address:
+                Intent intent=new Intent(this,MyMap.class);
+                startActivityForResult(intent,0);
                 break;
         }
     }

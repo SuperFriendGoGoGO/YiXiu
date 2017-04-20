@@ -14,40 +14,19 @@
         top:textColor="#ffffff"
         top:titleText="个人中心"></com.zykj.yixiu.widget.MyTopBar>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:id="@+id/rl_hard"
+        android:gravity="center"
+        android:orientation="vertical"
         android:background="#00cccc">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="170dp"
-            android:text="candy"
-            android:id="@+id/tv_name"
-            android:textColor="#ffffff"
-            android:layout_marginTop="10dp"
-            android:textSize="18dp"
-
-            android:layout_below="@id/fl_hard" />
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_toRightOf="@id/tv_name"
-            android:layout_below="@id/fl_hard"
-            android:layout_marginTop="10dp"
-            android:id="@+id/iv_sex"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/u674" />
 
         <FrameLayout
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@mipmap/u668"
             android:id="@+id/fl_hard"
-            android:layout_marginTop="19dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true">
 
@@ -69,8 +48,34 @@
                 android:layout_marginLeft="50dp"
                 android:textSize="10dp" />
         </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="candy"
+                android:id="@+id/tv_name"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10dp"
+                android:textSize="18dp"
+                />
 
-    </RelativeLayout>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_toRightOf="@id/tv_name"
+                android:layout_below="@id/fl_hard"
+                android:id="@+id/iv_sex"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/u674" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 

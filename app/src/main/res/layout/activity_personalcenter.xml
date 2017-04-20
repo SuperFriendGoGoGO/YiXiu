@@ -29,6 +29,7 @@
             android:textColor="#ffffff"
             android:layout_marginTop="10dp"
             android:textSize="18dp"
+
             android:layout_below="@id/fl_hard" />
 
         <ImageView

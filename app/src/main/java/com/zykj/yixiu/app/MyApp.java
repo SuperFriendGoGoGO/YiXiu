@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.youth.banner.loader.ImageLoader;
-import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.Y;
 
 import org.xutils.x;

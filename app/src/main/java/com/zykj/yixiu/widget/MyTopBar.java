@@ -8,6 +8,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -96,4 +97,21 @@ public class MyTopBar extends RelativeLayout {
     public MyTopBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+    public void setRightClick(MyTopBar.rightClick rightClick) {
+        this.rightClick = rightClick;
+    }
+    public void setLiftClick(MyTopBar.leftClick leftClick) {
+        this.leftClick = leftClick;
+    }
+    private leftClick leftClick; //成员变量用于映射外部传入的对象
+    private rightClick rightClick; //成员变量用于映射外部传入的对象
+    //添加回调接口
+    public  interface  leftClick{
+        void Click(View view); //左侧点击
+
+    }  public  interface  rightClick{
+        void Click(View view); //左侧点击
+
+    }
+
 }

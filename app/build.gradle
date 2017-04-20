@@ -58,5 +58,5 @@ dependencies {
     //选择器
     compile 'com.contrarywind:Android-PickerView:3.1.1'
     compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
 }

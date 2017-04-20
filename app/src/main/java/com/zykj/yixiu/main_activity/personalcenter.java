@@ -7,9 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.zykj.yixiu.R;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -19,8 +17,6 @@ import butterknife.OnClick;
  */
 
 public class PersonalCenter extends Activity {
-    @Bind(R.id.imageView3)
-    ImageView imageView3;
     @Bind(R.id.fl)
     FrameLayout fl;
     @Bind(R.id.tv_name)
@@ -56,11 +52,10 @@ public class PersonalCenter extends Activity {
 
     }
 
-    @OnClick({R.id.imageView3, R.id.fl, R.id.tv_name, R.id.fl_undone, R.id.ll_accomplish, R.id.abolish, R.id.iv_material, R.id.wallet, R.id.address, R.id.iv_approve, R.id.iv_terrace, R.id.iv_about, R.id.iv_set})
+    @OnClick({ R.id.fl, R.id.tv_name, R.id.fl_undone, R.id.ll_accomplish, R.id.abolish, R.id.iv_material, R.id.wallet, R.id.address, R.id.iv_approve, R.id.iv_terrace, R.id.iv_about, R.id.iv_set})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.imageView3:
-                break;
+
             case R.id.fl:
                 break;
             case R.id.tv_name:

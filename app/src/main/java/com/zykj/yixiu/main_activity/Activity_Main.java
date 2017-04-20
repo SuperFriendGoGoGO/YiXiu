@@ -16,7 +16,7 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
 import com.zykj.yixiu.R;
-import com.zykj.yixiu.app.MyApp;
+import com.zykj.yixiu.utils.OptionsPicke;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +31,13 @@ import butterknife.OnClick;
 
 public class Activity_Main extends Activity {
 
+
+    @Bind(R.id.tv_didian)
+    TextView tvDidian;
+    @Bind(R.id.iv_gereb)
+    ImageView ivGereb;
+    @Bind(R.id.banner)
+    Banner banner;
     @Bind(R.id.imageView)
     ImageView imageView;
     @Bind(R.id.textView)
@@ -57,8 +64,6 @@ public class Activity_Main extends Activity {
     TextView appliance;
     @Bind(R.id.appliances)
     ImageView appliances;
-    @Bind(R.id.banner)
-    Banner banner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +89,18 @@ public class Activity_Main extends Activity {
         banner.setIndicatorGravity(BannerConfig.CENTER);
 //        设置方法全部完毕时调用
         banner.start();
-
+        tvDidian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OptionsPicke optionsPicke=new OptionsPicke();
+                optionsPicke.showOptionsPicke(Activity_Main.this, new OptionsPicke.OptionsSelectListener() {
+                    @Override
+                    public void selectListener(String province, String city, String district) {
+                        tvDidian.setText(city);
+                    }
+                });
+            }
+        });
 
     }
 

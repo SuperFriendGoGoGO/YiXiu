@@ -1,9 +1,11 @@
 package com.zykj.yixiu.main_activity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,19 +15,25 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bigkoo.pickerview.OptionsPickerView;
+import com.hss01248.lib.StytledDialog;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.MobileBean;
 import com.zykj.yixiu.utils.Y;
 import com.zykj.yixiu.widget.MyTopBar;
 
 import org.xutils.http.RequestParams;
+import org.xutils.x;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.finalteam.galleryfinal.FunctionConfig;
+import cn.finalteam.galleryfinal.GalleryFinal;
+import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
  * Created by zykj on 2017/4/12.
@@ -38,22 +46,22 @@ public class Maintain extends Activity {
     MyTopBar headline;
     @Bind(R.id.MobileBrand)
     TextView MobileBrand;
-    @Bind(R.id.brand)
-    ImageView brand;
+    @Bind(R.id.ll_brand)
+    LinearLayout llBrand;
     @Bind(R.id.appliancetype)
     TextView appliancetype;
-    @Bind(R.id.type)
-    ImageView type;
+    @Bind(R.id.iv_type)
+    ImageView ivType;
     @Bind(R.id.ll_type)
     LinearLayout llType;
     @Bind(R.id.phonemodel)
     TextView phonemodel;
-    @Bind(R.id.model)
-    ImageView model;
+    @Bind(R.id.ll_model)
+    LinearLayout llModel;
     @Bind(R.id.faultpoint)
     TextView faultpoint;
-    @Bind(R.id.malfunction)
-    ImageView malfunction;
+    @Bind(R.id.ll_malfunction)
+    LinearLayout llMalfunction;
     @Bind(R.id.describe)
     EditText describe;
     @Bind(R.id.picture)
@@ -62,7 +70,10 @@ public class Maintain extends Activity {
     Button transfer;
     private String mark;//表示符
     private int index;//所选的位置对应的数
-    private int i=0;
+    private int i;
+    private List<MobileBean> lists;
+    private int pid = -1;
+    private int cacc = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +85,7 @@ public class Maintain extends Activity {
         mark = intent.getStringExtra("mark");
         //判断标示符是通过那个按键传来的
         if ("1".equals(mark)) {
+            llType.setVisibility(View.GONE);
             //什么都没改变
         } else if ("2".equals(mark)) {
             //改变文字 文字颜色
@@ -102,22 +114,26 @@ public class Maintain extends Activity {
     }
 
 
-    @OnClick({R.id.brand, R.id.type, R.id.model, R.id.malfunction, R.id.picture, R.id.transfer})
+    @OnClick({R.id.ll_brand, R.id.ll_type, R.id.ll_model, R.id.ll_malfunction, R.id.picture, R.id.transfer})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.brand:
+            case R.id.ll_brand:
+
                 //手机 品牌
                 if (mark.equals("1")) {
+                    MobileBrand.setText("请选择你的手机品牌");
+                    phonemodel.setText("请选择你的手机型号");
+                    faultpoint.setText("请选择你的手机故障点");
                     Y.get(new RequestParams("http://221.207.184.124:7071/yxg/findPhoneBrand"), new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             if (Y.getRespCode(result)) {
-                                final List<MobileBean> lists = JSON.parseArray(Y.getData(result), MobileBean.class);
+                                lists = JSON.parseArray(Y.getData(result), MobileBean.class);
                                 OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                        index=options1;//当前索引
-                                        MobileBrand.setText(lists.get(index).toString());
+                                        pid=lists.get(options1).getId();
+                                        MobileBrand.setText(lists.get(index).getName().toString());
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -137,17 +153,23 @@ public class Maintain extends Activity {
                             }
                         }
                     });
-                }else if (mark.equals("2")){
+                } else if (mark.equals("2")) {
+                    MobileBrand.setText("请选择你的电脑品牌");
+                    appliancetype.setText("请选择你的电脑类型");
+                    phonemodel.setText("请选择你的电脑型号");
+                    faultpoint.setText("请选择你的电脑故障点");
                     Y.get(new RequestParams("http://221.207.184.124:7071/yxg/findComputerBrand"), new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             if (Y.getRespCode(result)) {
-                                final List<MobileBean> lists = JSON.parseArray(Y.getData(result), MobileBean.class);
+                                lists = JSON.parseArray(Y.getData(result), MobileBean.class);
                                 OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                        index=options1;//当前索引
-                                        MobileBrand.setText(lists.get(index).toString());
+
+                                        MobileBrand.setText(lists.get(options1).getName().toString());
+                                        index = options1;//当前索引
+                                        pid = lists.get(options1).getId();
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -167,17 +189,22 @@ public class Maintain extends Activity {
                         }
                     });
 
-                }else if (mark.equals("3")){
-                    Y.get(new RequestParams("http://221.207.184.124:7071/yxg/findComputerBrand"), new Y.MyCommonCall<String>() {
+                } else if (mark.equals("3")) {
+                    MobileBrand.setText("请选择你的家电品牌");
+                    appliancetype.setText("请选择你的家电类型");
+                    phonemodel.setText("请选择你的家电型号");
+                    faultpoint.setText("请选择你的家电故障点");
+                    Y.get(new RequestParams("http://221.207.184.124:7071/yxg/findByApplianceBrand"), new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             if (Y.getRespCode(result)) {
-                                final List<MobileBean> lists = JSON.parseArray(Y.getData(result), MobileBean.class);
+                                lists = JSON.parseArray(Y.getData(result), MobileBean.class);
                                 OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                        index=options1;//当前索引
-                                        MobileBrand.setText(lists.get(index).toString());
+
+                                        MobileBrand.setText(lists.get(options1).getName().toString());
+                                       pid=lists.get(options1).getId();
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -198,14 +225,263 @@ public class Maintain extends Activity {
                     });
                 }
                 break;
-            case R.id.type:
-                break;
-            case R.id.model:
+            case R.id.ll_type:
+                //电脑分类
+                if (pid==-1){
+                    Y.t("请先选择品牌");
+                    return;
+                }
+
+                if (mark.equals("2")) {
+                    appliancetype.setText("请选择你的电脑类型");
+                    phonemodel.setText("请选择你的电脑型号");
+                    faultpoint.setText("请选择你的电脑故障点");
+                    Y.l("" + pid);
+                    Y.l(lists.toString());
+                    RequestParams params1 = new RequestParams("http://221.207.184.124:7071/yxg/findComputerCategory");
+                    params1.addBodyParameter("pid", pid + "");
+                    Y.get(params1, new Y.MyCommonCall<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            if (Y.getRespCode(result)) {
+                                lists = JSON.parseArray(Y.getData(result), MobileBean.class);
+                                OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                    @Override
+                                    public void onOptionsSelect(int options1, int options2, int options3, View v) {
+
+                                        appliancetype.setText(lists.get(options1).getName().toString());
+                                        cacc = lists.get(options1).getId();
+                                    }
+                                }).build();
+                                List<String> list = new ArrayList();
+                                for (MobileBean mb : lists) {
+                                    list.add(mb.getName());
+                                }
+                                //添加数据
+                                opv.setPicker(list, null, null);
+                                //显示选择器
+
+                                opv.show();
+                                appliancetype.setTextColor(Color.parseColor("#00cccc"));
+
+                            } else {
+                                Y.t("解析异常");
+                            }
+                        }
+                    });
+
+                } else if (mark.equals("3")) {
+                    appliancetype.setText("请选择你的家电类型");
+                    phonemodel.setText("请选择你的家电型号");
+                    faultpoint.setText("请选择你的家电故障点");
+                    RequestParams params1 = new RequestParams("http://221.207.184.124:7071/yxg/findComputerCategory");
+                    params1.addBodyParameter("pid", lists.get(index).getId() + "");
+                    Y.get(params1, new Y.MyCommonCall<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            if (Y.getRespCode(result)) {
+                                lists = JSON.parseArray(Y.getData(result), MobileBean.class);
+                                OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                    @Override
+                                    public void onOptionsSelect(int options1, int options2, int options3, View v) {
+
+                                        appliancetype.setText(lists.get(options1).getName().toString());
+                                        cacc = lists.get(options1).getId();
+                                    }
+                                }).build();
+                                List<String> list = new ArrayList();
+                                for (MobileBean mb : lists) {
+                                    list.add(mb.getName());
+                                }
+                                //添加数据
+                                opv.setPicker(list, null, null);
+                                //显示选择器
+
+                                opv.show();
+                                appliancetype.setTextColor(Color.parseColor("#00cccc"));
+
+                            } else {
+                                Y.t("解析异常");
+                            }
+                        }
+                    });
+                }
 
                 break;
-            case R.id.malfunction:
+            case R.id.ll_model:
+                if (pid==-1){
+                    Y.t("请先选择品牌");
+                    return;
+                }
+
+                if (mark.equals("1")) {
+                    phonemodel.setText("请选择你的手机型号");
+                    faultpoint.setText("请选择你的手机故障点");
+                    final RequestParams params2 = new RequestParams("http://221.207.184.124:7071/yxg/findPhoneModel");
+                    params2.addBodyParameter("pid",pid + "");
+                    Y.get(params2, new Y.MyCommonCall<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            if (Y.getRespCode(result)) {
+                                lists = JSON.parseArray(Y.getData(result), MobileBean.class);
+                                OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                    @Override
+                                    public void onOptionsSelect(int options1, int options2, int options3, View v) {
+
+                                        phonemodel.setText(lists.get(options1).getName().toString());
+                                    }
+                                }).build();
+                                List<String> list = new ArrayList();
+                                for (MobileBean mb : lists) {
+                                    list.add(mb.getName());
+                                }
+                                //添加数据
+                                opv.setPicker(list, null, null);
+                                //显示选择器
+
+                                opv.show();
+                                phonemodel.setTextColor(Color.parseColor("#00cccc"));
+
+                            } else {
+                                Y.t("解析异常");
+                            }
+                        }
+                    });
+
+                } else if (mark.equals("2")) {
+                    if (pid==-1){
+                        Y.t("请先选择品牌");
+                        return;
+                    }
+                    if (cacc==-1){
+                        Y.t("请先选择类型");
+                        return;
+                    }
+                    phonemodel.setText("请选择你的电脑型号");
+                    faultpoint.setText("请选择你的电脑故障点");
+                    RequestParams params2 = new RequestParams("http://221.207.184.124:7071/yxg/findByComputerModel");
+                    params2.addBodyParameter("pid", pid + "");
+                    params2.addBodyParameter("category", cacc + "");
+                    Y.get(params2, new Y.MyCommonCall<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            if (Y.getRespCode(result)) {
+                                lists = JSON.parseArray(Y.getData(result), MobileBean.class);
+                                OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                    @Override
+                                    public void onOptionsSelect(int options1, int options2, int options3, View v) {
+
+                                        phonemodel.setText(lists.get(options1).getName().toString());
+                                    }
+                                }).build();
+                                List<String> list = new ArrayList();
+                                for (MobileBean mb : lists) {
+                                    list.add(mb.getName());
+                                }
+                                //添加数据
+                                opv.setPicker(list, null, null);
+                                //显示选择器
+
+                                opv.show();
+                                phonemodel.setTextColor(Color.parseColor("#00cccc"));
+
+                            } else {
+                                Y.t("解析异常");
+                            }
+                        }
+                    });
+
+                } else if (mark.equals("3")) {
+                    if (pid==-1){
+                        Y.t("请先选择品牌");
+                        return;
+                    }
+                    if (cacc==-1){
+                        Y.t("请先选择类型");
+                        return;
+                    }
+                    phonemodel.setText("请选择你的家电型号");
+                    faultpoint.setText("请选择你的家电故障点");
+                    RequestParams params2 = new RequestParams("http://221.207.184.124:7071/yxg/findByApplianceModel");
+                    params2.addBodyParameter("pid", pid + "");
+                    params2.addBodyParameter("category", cacc + "");
+                    Y.get(params2, new Y.MyCommonCall<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            if (Y.getRespCode(result)) {
+                                lists = JSON.parseArray(Y.getData(result), MobileBean.class);
+                                OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                    @Override
+                                    public void onOptionsSelect(int options1, int options2, int options3, View v) {
+                                        i = options1;
+                                        phonemodel.setText(lists.get(i).getName().toString());
+                                    }
+                                }).build();
+                                List<String> list = new ArrayList();
+                                for (MobileBean mb : lists) {
+                                    list.add(mb.getName());
+                                }
+                                //添加数据
+                                opv.setPicker(list, null, null);
+                                //显示选择器
+
+                                opv.show();
+                                phonemodel.setTextColor(Color.parseColor("#00cccc"));
+
+                            } else {
+                                Y.t("解析异常");
+                            }
+                        }
+                    });
+                }
+
+                break;
+            case R.id.ll_malfunction:
+                Y.get(new RequestParams("http://221.207.184.124:7071/yxg/findPhoneFault"), new Y.MyCommonCall<String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        if (Y.getRespCode(result)) {
+                            lists = JSON.parseArray(Y.getData(result), MobileBean.class);
+                            OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                @Override
+                                public void onOptionsSelect(int options1, int options2, int options3, View v) {
+                                    faultpoint.setText(lists.get(index).getName().toString());
+                                }
+                            }).build();
+                            List<String> list = new ArrayList();
+                            for (MobileBean mb : lists) {
+                                list.add(mb.getName());
+                            }
+                            //添加数据
+                            opv.setPicker(list, null, null);
+                            //显示选择器
+
+                            opv.show();
+                            faultpoint.setTextColor(Color.parseColor("#00cccc"));
+
+
+                        } else {
+                            Y.t("解析异常");
+                        }
+                    }
+                });
+
                 break;
             case R.id.picture:
+                GalleryFinal.openGallerySingle(101, new GalleryFinal.OnHanlderResultCallback() {
+                    @Override
+                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
+                        PhotoInfo info = resultList.get(0);
+                        String photoPath = info.getPhotoPath();
+                        x.image().bind(picture,new File(photoPath).toURI().toString());
+
+                    }
+
+                    @Override
+                    public void onHanlderFailure(int requestCode, String errorMsg) {
+
+                    }
+                });
                 break;
             case R.id.transfer:
                 if (!MobileBrand.getText().toString().isEmpty() && !appliancetype.getText().toString().isEmpty() && !phonemodel.getText().toString().isEmpty() && !faultpoint.getText().toString().isEmpty() && !describe.getText().toString().isEmpty()) {

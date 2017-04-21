@@ -87,7 +87,7 @@ public class AttendantCall extends Activity {
                 break;
             case R.id.ll_address:
                 Intent intent=new Intent(this,MyMap.class);
-                startActivityForResult(intent,0);
+               startActivity(intent);
                 break;
         }
     }

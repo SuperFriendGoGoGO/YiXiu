@@ -9,7 +9,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.utils.Y;
+
+import org.xutils.http.RequestParams;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,6 +43,12 @@ public class Denglv extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_denglv);
         ButterKnife.bind(this);
+        Intent intent=getIntent();
+        String num = intent.getStringExtra("num");
+        String yzm = intent.getStringExtra("yzm");
+        etUser.setText(num);
+        etPassword.setText(yzm);
+        startActivity(intent);
     }
 
 
@@ -45,6 +56,27 @@ public class Denglv extends Activity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_ensure:
+                RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/login");
+                params.addBodyParameter("phone", etUser.getText().toString());
+                params.addBodyParameter("password", etPassword.getText().toString());
+
+                Y.get(params, new Y.MyCommonCall<String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        if (Y.getRespCode(result)) {
+                            JSONObject jsonObject = JSON.parseObject(result);
+                            String resp_code = jsonObject.getString("resp_code");
+                            if (resp_code.equals("0")) {
+                                Y.t("登陆成功");
+                                Intent intent=new Intent(Denglv.this,Activity_Main.class);
+                                startActivity(intent);
+
+                            }
+                        } else {
+                            Y.t("登录异常");
+                        }
+                    }
+                });
                 break;
             case R.id.tv_login:
                 Intent intent=new Intent(this,Login.class);

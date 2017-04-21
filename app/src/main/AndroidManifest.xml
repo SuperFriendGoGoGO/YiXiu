@@ -33,7 +33,7 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="czMX2RYthKYpBjKSxwwwyApWPnEqIZBS" />
-        <activity android:name=".main_activity.Activity_Main">
+        <activity android:name=".main_activity.Denglv">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"></action>
                 <category android:name="android.intent.category.LAUNCHER"></category>
@@ -42,6 +42,8 @@
        <activity android:name=".main_activity.Maintain"></activity>
         <activity android:name=".main_activity.PersonalCenter"></activity>
         <activity android:name=".main_activity.AttendantCall"></activity>
+        <activity android:name=".main_activity.Login"></activity>
+
     </application>
 
 

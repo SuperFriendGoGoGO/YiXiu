@@ -17,7 +17,10 @@
     <uses-permission android:name="READ_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
     <!--GalleryFinal图片选择器 结束-->
-
+    <!--banner 使用开始-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--banner 使用结束-->
 
     <application
         android:allowBackup="true"

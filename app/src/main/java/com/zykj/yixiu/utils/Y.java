@@ -1,10 +1,13 @@
 package com.zykj.yixiu.utils;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.hss01248.lib.StytledDialog;
 import com.orhanobut.logger.Logger;
+
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
@@ -17,6 +20,8 @@ import org.xutils.x;
 public class Y {
     public static Context context;
     public  static  boolean isLog=true;
+
+
 
 
     public static  void t(String  str){//吐司
@@ -37,10 +42,15 @@ public class Y {
         return JSON.parseObject(result).getString("data");
     }
     public static Callback.Cancelable get(RequestParams params, MyCommonCall<String> call){
+      // StytledDialog.showProgressDialog(context, "", true, true);
+
         return   x.http().get(params, call);
+
     }
     public static Callback.Cancelable post(RequestParams params, MyCommonCall<String> call){
+       // StytledDialog.showProgressDialog(context,null,true,true);
         return   x.http().post(params, call);
+
     }
     public abstract  static class  MyCommonCall<String> implements Callback.CommonCallback<String>{ //减少代码的复用性
         @Override
@@ -52,6 +62,7 @@ public class Y {
         @Override
         public void onError(Throwable ex, boolean isOnCallback) {
             t("服务器异常");
+
             ex.printStackTrace();
         }
     }

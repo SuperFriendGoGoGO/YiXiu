@@ -7,14 +7,22 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.utils.Y;
+
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import java.io.File;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.finalteam.galleryfinal.GalleryFinal;
+import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
  * Created by zykj on 2017/4/19.
@@ -23,16 +31,18 @@ import butterknife.OnClick;
 public class Personal extends Activity {
 
 
-    @Bind(R.id.tv_name)
-    TextView tvName;
-    @Bind(R.id.iv_sex)
-    ImageView ivSex;
+    @Bind(R.id.iv_hard)
+    ImageView ivHard;
     @Bind(R.id.iv_renzheng)
     ImageView ivRenzheng;
     @Bind(R.id.fl_hard)
     FrameLayout flHard;
+    @Bind(R.id.tv_name)
+    TextView tvName;
+    @Bind(R.id.iv_sex)
+    ImageView ivSex;
     @Bind(R.id.rl_hard)
-    RelativeLayout rlHard;
+    LinearLayout rlHard;
     @Bind(R.id.fl_undone)
     FrameLayout flUndone;
     @Bind(R.id.ll_accomplish)
@@ -69,6 +79,7 @@ public class Personal extends Activity {
     ImageView ivSet;
     @Bind(R.id.ll_set)
     LinearLayout llSet;
+    private String photoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,27 +89,59 @@ public class Personal extends Activity {
     }
 
 
-    @OnClick({R.id.fl_hard, R.id.fl_undone, R.id.ll_accomplish, R.id.abolish, R.id.ll_myziliao, R.id.ll_myqianbao, R.id.ll_mydizhi, R.id.ll_renzheng, R.id.ll_pingtai, R.id.ll_set})
+    @OnClick({R.id.iv_hard, R.id.fl_undone, R.id.ll_accomplish, R.id.abolish, R.id.ll_myziliao, R.id.ll_myqianbao, R.id.ll_mydizhi, R.id.ll_renzheng, R.id.ll_pingtai, R.id.ll_set})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.fl_hard:
+            case R.id.iv_hard:
+                GalleryFinal.openGallerySingle(100, new GalleryFinal.OnHanlderResultCallback() {
+                    @Override
+                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
+                        if (reqeustCode == 100) {
+                            PhotoInfo info = resultList.get(0);
+                            photoPath = info.getPhotoPath();
+                            x.image().bind(ivHard, new File(photoPath).toURI().toString());
+                        }
+
+                    }
+
+                    @Override
+                    public void onHanlderFailure(int requestCode, String errorMsg) {
+
+                    }
+                });
+                RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/uploadIcon");
+                params.addBodyParameter("icon", photoPath);
+                params.addBodyParameter("token", Y.TOKEN);
+
+                Y.get(params, new Y.MyCommonCall<String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        if (Y.getRespCode(result)) {
+                            Y.t("上传正常");
+                        } else {
+                            Y.t("上传异常");
+                        }
+                    }
+                });
                 break;
             case R.id.fl_undone:
-                Intent intent=new Intent(this,MyOrder.class);
-                intent.putExtra("wow","1");
+                Intent intent = new Intent(this, MyOrder.class);
+                intent.putExtra("wow", "1");
                 startActivity(intent);
                 break;
             case R.id.ll_accomplish:
-                Intent intent2=new Intent(this,MyOrder.class);
-                intent2.putExtra("wow","2");
+                Intent intent2 = new Intent(this, MyOrder.class);
+                intent2.putExtra("wow", "2");
                 startActivity(intent2);
                 break;
             case R.id.abolish:
-                Intent intent3=new Intent(this,MyOrder.class);
-                intent3.putExtra("wow","2");
+                Intent intent3 = new Intent(this, MyOrder.class);
+                intent3.putExtra("wow", "2");
                 startActivity(intent3);
                 break;
             case R.id.ll_myziliao:
+                Intent intent4 = new Intent(this, MyZiLiao.class);
+                startActivity(intent4);
                 break;
             case R.id.ll_myqianbao:
                 break;

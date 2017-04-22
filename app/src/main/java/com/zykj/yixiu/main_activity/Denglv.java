@@ -12,9 +12,12 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.utils.User;
 import com.zykj.yixiu.utils.Y;
 
 import org.xutils.http.RequestParams;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,14 +67,15 @@ public class Denglv extends Activity {
                     @Override
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {
-                            JSONObject jsonObject = JSON.parseObject(result);
-                            String resp_code = jsonObject.getString("resp_code");
-                            if (resp_code.equals("0")) {
-                                Y.t("登陆成功");
+                            User users = JSON.parseObject(result, User.class);
+                            Y.USER=users;
+                            Y.TOKEN=users.getToken();
+
+                                Y.t("登陆成功----");
                                 Intent intent=new Intent(Denglv.this,Activity_Main.class);
                                 startActivity(intent);
 
-                            }
+
                         } else {
                             Y.t("登录异常");
                         }

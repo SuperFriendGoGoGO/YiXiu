@@ -25,10 +25,14 @@
         <FrameLayout
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@mipmap/u668"
             android:id="@+id/fl_hard"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/u668"
+                android:id="@+id/iv_hard"/>
 
             <ImageView
                 android:layout_width="30dp"
@@ -68,8 +72,6 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_toRightOf="@id/tv_name"
-                android:layout_below="@id/fl_hard"
                 android:id="@+id/iv_sex"
                 android:layout_marginLeft="10dp"
                 android:src="@mipmap/u674" />

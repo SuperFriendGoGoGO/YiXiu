@@ -90,7 +90,7 @@ public class MyOrder extends Activity {
         }
     }
 
-    @OnClick({R.id.tv_wei, R.id.tv_yi, R.id.tv_quxiao, R.id.bt_chakan1, R.id.bt_quxiao1, R.id.bt_chakan2, R.id.bt_quxiao2})
+    @OnClick({R.id.iv_hard,R.id.tv_wei, R.id.tv_yi, R.id.tv_quxiao, R.id.bt_chakan1, R.id.bt_quxiao1, R.id.bt_chakan2, R.id.bt_quxiao2})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_wei:
@@ -134,6 +134,9 @@ public class MyOrder extends Activity {
             case R.id.bt_chakan2:
                 break;
             case R.id.bt_quxiao2:
+                break;
+            case R.id.iv_hard:
+
                 break;
         }
     }

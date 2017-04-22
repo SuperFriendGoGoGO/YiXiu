@@ -471,9 +471,11 @@ public class Maintain extends Activity {
                 GalleryFinal.openGallerySingle(101, new GalleryFinal.OnHanlderResultCallback() {
                     @Override
                     public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
-                        PhotoInfo info = resultList.get(0);
-                        String photoPath = info.getPhotoPath();
-                        x.image().bind(picture,new File(photoPath).toURI().toString());
+                       if (reqeustCode==101){
+                           PhotoInfo info = resultList.get(0);
+                           String photoPath = info.getPhotoPath();
+                           x.image().bind(picture,new File(photoPath).toURI().toString());
+                       }
 
                     }
 

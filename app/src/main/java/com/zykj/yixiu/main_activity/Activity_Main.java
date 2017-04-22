@@ -94,10 +94,11 @@ public class Activity_Main extends Activity {
             }
         });
 
+
     }
 
     //设置传入标识符 让——修理——页面识别
-    @OnClick({R.id.mobile, R.id.computer, R.id.appliances})
+    @OnClick({R.id.mobile, R.id.computer, R.id.appliances,R.id.iv_gereb})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mobile:
@@ -114,6 +115,10 @@ public class Activity_Main extends Activity {
                 Intent appliancesintent = new Intent(this, Maintain.class);
                 appliancesintent.putExtra("mark", "3");
                 startActivity(appliancesintent);
+                break;
+            case R.id.iv_gereb:
+                Intent gerebintent = new Intent(this, Personal.class);
+                startActivity(gerebintent);
                 break;
         }
     }

@@ -72,6 +72,7 @@
             android:layout_height="40dp"
             android:layout_marginLeft="70dp"
             android:hint="请输入你的姓名"
+            android:id="@+id/et_name"
             android:textColorHint="#c4c4c4"
             android:textSize="15dp" />
     </LinearLayout>
@@ -151,6 +152,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="8dp"
             android:gravity="right"
+            android:id="@+id/et_num"
             android:text="18348690129"
             android:textSize="15dp" />
 
@@ -188,6 +190,7 @@
            android:layout_height="30dp"
            android:gravity="right"
            android:text="黑龙江 哈尔滨"
+           android:id="@+id/tv_dizhi"
            android:layout_marginTop="5dp"
            android:textSize="20dp"/>
         <ImageView
@@ -198,6 +201,15 @@
             android:src="@mipmap/u96" />
 
     </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:background="#00cccc"
+        android:id="@+id/bt_tijiao"
+        android:text="提交"/>
 
 
 </LinearLayout>

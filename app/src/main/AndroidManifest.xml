@@ -43,6 +43,9 @@
         <activity android:name=".main_activity.PersonalCenter"></activity>
         <activity android:name=".main_activity.AttendantCall"></activity>
         <activity android:name=".main_activity.Login"></activity>
+        <activity android:name=".main_activity.Activity_Main"></activity>
+        <activity android:name=".main_activity.Personal"></activity>
+        <activity android:name=".main_activity.MyZiLiao"></activity>
 
     </application>
 

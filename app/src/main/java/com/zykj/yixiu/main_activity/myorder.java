@@ -48,15 +48,17 @@ public class MyOrder extends Activity {
     Button btChakan2;
     @Bind(R.id.bt_quxiao2)
     Button btQuxiao2;
+    @Bind(R.id.iv_fanhui)
+    ImageView ivFanhui;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myorder);
         ButterKnife.bind(this);
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         String wow = intent.getStringExtra("wow");
-        if (wow.equals("1")){
+        if (wow.equals("1")) {
             tvWei.setTextColor(Color.parseColor("#00cccc"));
             ivWei.setImageResource(R.mipmap.u15_line);
             tvQuxiao.setTextColor(Color.parseColor("#6b6b6b"));
@@ -67,7 +69,7 @@ public class MyOrder extends Activity {
             tvTime.setVisibility(View.VISIBLE);
             btChongfa.setVisibility(View.VISIBLE);
 
-        }else if (wow.equals("2")){
+        } else if (wow.equals("2")) {
             tvYi.setTextColor(Color.parseColor("#00cccc"));
             ivYi.setImageResource(R.mipmap.u15_line);
             tvQuxiao.setTextColor(Color.parseColor("#6b6b6b"));
@@ -77,7 +79,7 @@ public class MyOrder extends Activity {
             tvJiedan.setVisibility(View.GONE);
             tvTime.setVisibility(View.GONE);
             btChongfa.setVisibility(View.GONE);
-        }else if (wow.equals("3")){
+        } else if (wow.equals("3")) {
             tvQuxiao.setTextColor(Color.parseColor("#00cccc"));
             ivQuxiqao.setImageResource(R.mipmap.u15_line);
             tvYi.setTextColor(Color.parseColor("#6b6b6b"));
@@ -90,7 +92,7 @@ public class MyOrder extends Activity {
         }
     }
 
-    @OnClick({R.id.iv_hard,R.id.tv_wei, R.id.tv_yi, R.id.tv_quxiao, R.id.bt_chakan1, R.id.bt_quxiao1, R.id.bt_chakan2, R.id.bt_quxiao2})
+    @OnClick({R.id.iv_fanhui,R.id.iv_hard, R.id.tv_wei, R.id.tv_yi, R.id.tv_quxiao, R.id.bt_chakan1, R.id.bt_quxiao1, R.id.bt_chakan2, R.id.bt_quxiao2})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_wei:
@@ -128,7 +130,7 @@ public class MyOrder extends Activity {
                 break;
             case R.id.bt_chakan1:
                 if (tvWei.getTextColors().equals(Color.parseColor("#00cccc")))
-                break;
+                    break;
             case R.id.bt_quxiao1:
                 break;
             case R.id.bt_chakan2:
@@ -137,6 +139,10 @@ public class MyOrder extends Activity {
                 break;
             case R.id.iv_hard:
 
+                break;
+            case R.id.iv_fanhui:
+                Intent intent=new Intent(this,Personal.class);
+                startActivity(intent);
                 break;
         }
     }

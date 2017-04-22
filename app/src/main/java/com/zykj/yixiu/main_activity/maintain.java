@@ -1,11 +1,9 @@
 package com.zykj.yixiu.main_activity;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +13,6 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bigkoo.pickerview.OptionsPickerView;
-import com.hss01248.lib.StytledDialog;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.MobileBean;
 import com.zykj.yixiu.utils.Y;
@@ -31,7 +28,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.finalteam.galleryfinal.FunctionConfig;
 import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 
@@ -68,6 +64,10 @@ public class Maintain extends Activity {
     ImageView picture;
     @Bind(R.id.transfer)
     Button transfer;
+    @Bind(R.id.iv_fanhui)
+    ImageView ivFanhui;
+    @Bind(R.id.ll_picture)
+    LinearLayout llPicture;
     private String mark;//表示符
     private int index;//所选的位置对应的数
     private int i;
@@ -114,7 +114,7 @@ public class Maintain extends Activity {
     }
 
 
-    @OnClick({R.id.ll_brand, R.id.ll_type, R.id.ll_model, R.id.ll_malfunction, R.id.picture, R.id.transfer})
+    @OnClick({R.id.ll_brand, R.id.ll_type, R.id.ll_model, R.id.ll_malfunction, R.id.picture, R.id.transfer,R.id.iv_fanhui})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_brand:
@@ -132,7 +132,7 @@ public class Maintain extends Activity {
                                 OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                        pid=lists.get(options1).getId();
+                                        pid = lists.get(options1).getId();
                                         MobileBrand.setText(lists.get(index).getName().toString());
                                     }
                                 }).build();
@@ -204,7 +204,7 @@ public class Maintain extends Activity {
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
 
                                         MobileBrand.setText(lists.get(options1).getName().toString());
-                                       pid=lists.get(options1).getId();
+                                        pid = lists.get(options1).getId();
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -227,7 +227,7 @@ public class Maintain extends Activity {
                 break;
             case R.id.ll_type:
                 //电脑分类
-                if (pid==-1){
+                if (pid == -1) {
                     Y.t("请先选择品牌");
                     return;
                 }
@@ -309,7 +309,7 @@ public class Maintain extends Activity {
 
                 break;
             case R.id.ll_model:
-                if (pid==-1){
+                if (pid == -1) {
                     Y.t("请先选择品牌");
                     return;
                 }
@@ -318,7 +318,7 @@ public class Maintain extends Activity {
                     phonemodel.setText("请选择你的手机型号");
                     faultpoint.setText("请选择你的手机故障点");
                     final RequestParams params2 = new RequestParams("http://221.207.184.124:7071/yxg/findPhoneModel");
-                    params2.addBodyParameter("pid",pid + "");
+                    params2.addBodyParameter("pid", pid + "");
                     Y.get(params2, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
@@ -349,11 +349,11 @@ public class Maintain extends Activity {
                     });
 
                 } else if (mark.equals("2")) {
-                    if (pid==-1){
+                    if (pid == -1) {
                         Y.t("请先选择品牌");
                         return;
                     }
-                    if (cacc==-1){
+                    if (cacc == -1) {
                         Y.t("请先选择类型");
                         return;
                     }
@@ -392,11 +392,11 @@ public class Maintain extends Activity {
                     });
 
                 } else if (mark.equals("3")) {
-                    if (pid==-1){
+                    if (pid == -1) {
                         Y.t("请先选择品牌");
                         return;
                     }
-                    if (cacc==-1){
+                    if (cacc == -1) {
                         Y.t("请先选择类型");
                         return;
                     }
@@ -471,11 +471,11 @@ public class Maintain extends Activity {
                 GalleryFinal.openGallerySingle(101, new GalleryFinal.OnHanlderResultCallback() {
                     @Override
                     public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
-                       if (reqeustCode==101){
-                           PhotoInfo info = resultList.get(0);
-                           String photoPath = info.getPhotoPath();
-                           x.image().bind(picture,new File(photoPath).toURI().toString());
-                       }
+                        if (reqeustCode == 101) {
+                            PhotoInfo info = resultList.get(0);
+                            String photoPath = info.getPhotoPath();
+                            x.image().bind(picture, new File(photoPath).toURI().toString());
+                        }
 
                     }
 
@@ -490,6 +490,10 @@ public class Maintain extends Activity {
                     Intent intent = new Intent(this, AttendantCall.class);
                     startActivity(intent);
                 }
+                break;
+            case R.id.iv_fanhui:
+                Intent intent=new Intent(this,Activity_Main.class);
+                startActivity(intent);
                 break;
         }
     }

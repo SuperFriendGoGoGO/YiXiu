@@ -69,6 +69,7 @@ public class Denglv extends Activity {
                         if (Y.getRespCode(result)) {
                             User users = JSON.parseObject(result, User.class);
                             Y.USER=users;
+                            Y.USER.setUser_id(users.getUser_id());
                             Y.TOKEN=users.getToken();
 
                                 Y.t("登陆成功----");

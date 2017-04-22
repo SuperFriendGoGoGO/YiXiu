@@ -64,6 +64,7 @@ public class Activity_Main extends Activity {
     TextView appliance;
     @Bind(R.id.appliances)
     ImageView appliances;
+    private String sheng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +90,7 @@ public class Activity_Main extends Activity {
                     @Override
                     public void selectListener(String province, String city, String district) {
                         tvDidian.setText(city);
+                        sheng = province;
                     }
                 });
             }
@@ -118,6 +120,8 @@ public class Activity_Main extends Activity {
                 break;
             case R.id.iv_gereb:
                 Intent gerebintent = new Intent(this, Personal.class);
+                gerebintent.putExtra("didian",sheng);
+                gerebintent.putExtra("chengshi",tvDidian.getText().toString());
                 startActivity(gerebintent);
                 break;
         }

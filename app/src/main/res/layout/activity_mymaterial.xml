@@ -185,14 +185,15 @@
             android:layout_marginTop="5dp"
             android:textSize="20dp" />
 
-       <TextView
-           android:layout_width="250dp"
-           android:layout_height="30dp"
-           android:gravity="right"
-           android:text="黑龙江 哈尔滨"
-           android:id="@+id/tv_dizhi"
-           android:layout_marginTop="5dp"
-           android:textSize="20dp"/>
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:gravity="right"
+            android:text="黑龙江 哈尔滨"
+            android:id="@+id/tv_dizhi"
+            android:layout_marginTop="5dp"
+            android:textSize="20dp"/>
+
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"

@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.Y;
 
@@ -80,12 +82,19 @@ public class Personal extends Activity {
     @Bind(R.id.ll_set)
     LinearLayout llSet;
     private String photoPath;
+    private String didian;
+    private String chengshi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personalcenter);
         ButterKnife.bind(this);
+        Intent intent = getIntent();
+        didian = intent.getStringExtra("didian");
+        chengshi = intent.getStringExtra("chengshi");
+
+
     }
 
 
@@ -117,6 +126,7 @@ public class Personal extends Activity {
                     @Override
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {
+                            Y.USER.setIcon(Y.getData(result));
                             Y.t("上传正常");
                         } else {
                             Y.t("上传异常");
@@ -141,6 +151,8 @@ public class Personal extends Activity {
                 break;
             case R.id.ll_myziliao:
                 Intent intent4 = new Intent(this, MyZiLiao.class);
+                intent4.putExtra("didian",didian);
+                intent4.putExtra("chengshi",chengshi);
                 startActivity(intent4);
                 break;
             case R.id.ll_myqianbao:

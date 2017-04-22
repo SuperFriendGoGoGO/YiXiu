@@ -133,21 +133,25 @@ public class Personal extends Activity {
                 });
                 break;
             case R.id.fl_undone:
+                //我的订单 未完成
                 Intent intent = new Intent(this, MyOrder.class);
                 intent.putExtra("wow", "1");
                 startActivity(intent);
                 break;
             case R.id.ll_accomplish:
+                //我的订单 已完成
                 Intent intent2 = new Intent(this, MyOrder.class);
                 intent2.putExtra("wow", "2");
                 startActivity(intent2);
                 break;
             case R.id.abolish:
+                //我的订单 已取消
                 Intent intent3 = new Intent(this, MyOrder.class);
-                intent3.putExtra("wow", "2");
+                intent3.putExtra("wow", "3");
                 startActivity(intent3);
                 break;
             case R.id.ll_myziliao:
+                //完善个人资料
                 Intent intent4 = new Intent(this, MyZiLiao.class);
                 intent4.putExtra("didian",didian);
                 intent4.putExtra("chengshi",chengshi);
@@ -156,11 +160,19 @@ public class Personal extends Activity {
             case R.id.ll_myqianbao:
                 break;
             case R.id.ll_mydizhi:
-
+                //增加地址或查看地址
+                Intent intent5 = new Intent(this,MyDizhi.class);
+                startActivity(intent5);
                 break;
             case R.id.ll_renzheng:
+                //跳转页面——————认证身份证
+                Intent intent6 = new Intent(this,RenZheng.class);
+                startActivity(intent6);
                 break;
             case R.id.ll_pingtai:
+                //跳转页面——————平台服务
+                Intent intent7 = new Intent(this,PingTai.class);
+                startActivity(intent7);
                 break;
             case R.id.ll_set:
                 break;

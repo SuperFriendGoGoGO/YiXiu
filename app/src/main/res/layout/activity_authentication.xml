@@ -85,6 +85,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
                     android:background="#ffffff"
+                    android:id="@+id/iv_zhengmian"
                     android:src="@mipmap/u132" />
             </FrameLayout>
         </LinearLayout>
@@ -149,6 +150,7 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:id="@+id/iv_fanmian"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
                     android:background="#ffffff"
@@ -161,6 +163,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="提交"
+        android:id="@+id/bt_ok"
         android:textColor="#ffffff"
         android:background="@mipmap/u2556"
         android:textSize="20dp"/>

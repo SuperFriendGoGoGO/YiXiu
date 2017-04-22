@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#ffffff"
+        android:id="@+id/ll_zixun"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -57,6 +58,7 @@
         android:layout_height="60dp"
         android:background="#ffffff"
         android:layout_marginTop="10dp"
+        android:id="@+id/ll_wenti"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

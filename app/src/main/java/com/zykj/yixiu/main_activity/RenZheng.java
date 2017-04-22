@@ -33,6 +33,8 @@ public class RenZheng extends Activity {
     ImageView ivFanmian;
     @Bind(R.id.bt_ok)
     Button btOk;
+    @Bind(R.id.iv_fanhui)
+    ImageView ivFanhui;
     private String photoPath;
     private String photoPath2;
 
@@ -43,7 +45,7 @@ public class RenZheng extends Activity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.iv_zhengmian, R.id.iv_fanmian, R.id.bt_ok})
+    @OnClick({R.id.iv_zhengmian, R.id.iv_fanmian, R.id.bt_ok,R.id.iv_fanhui})
     public void onClick(View view) {
         switch (view.getId()) {
             //身份证正面 加载
@@ -98,13 +100,17 @@ public class RenZheng extends Activity {
                             //上传成功
                             Y.t("上传正常");
                             //跳转页面————————个人中心
-                            Intent intent=new Intent(RenZheng.this,Personal.class);
+                            Intent intent = new Intent(RenZheng.this, Personal.class);
                             startActivity(intent);
                         } else {
                             Y.t("上传异常");
                         }
                     }
                 });
+                break;
+            case R.id.iv_fanhui:
+                Intent intent=new Intent(this,Personal.class);
+                startActivity(intent);
                 break;
         }
     }

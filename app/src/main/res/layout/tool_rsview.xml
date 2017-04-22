@@ -72,19 +72,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:text="2016-18-19"
+                        android:text="2016-18-19 13:00"
                         android:textColor="#949494"
                         android:layout_marginTop="6dp"
                         android:layout_marginLeft="10dp"
                         android:textSize="18dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:text="13:00"
-                        android:textColor="#949494"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="18dp"/>
+
                 </LinearLayout>
 
                 <LinearLayout

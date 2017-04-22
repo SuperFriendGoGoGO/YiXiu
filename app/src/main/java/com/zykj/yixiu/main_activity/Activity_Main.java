@@ -17,6 +17,7 @@ import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.OptionsPicke;
+import com.zykj.yixiu.utils.Y;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +92,9 @@ public class Activity_Main extends Activity {
                     public void selectListener(String province, String city, String district) {
                         tvDidian.setText(city);
                         sheng = province;
+                        Y.SHENG=province;
+                        Y.SHI=city;
+                        Y.QU=district;
                     }
                 });
             }

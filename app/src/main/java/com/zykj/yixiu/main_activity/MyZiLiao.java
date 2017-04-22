@@ -12,10 +12,13 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.bumptech.glide.Glide;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.Y;
 
 import org.xutils.http.RequestParams;
+
+import java.io.File;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -44,7 +47,7 @@ public class MyZiLiao extends Activity {
     LinearLayout llAddress;
     @Bind(R.id.bt_tijiao)
     Button btTijiao;
-    String sex;
+    String sex="男";
     private String didian;
     private String chengshi;
 
@@ -56,6 +59,7 @@ public class MyZiLiao extends Activity {
         Intent intent=getIntent();
         didian = intent.getStringExtra("didian");
         chengshi = intent.getStringExtra("chengshi");
+        Glide.with(this).load(Y.USER.getIcon()).into(ivHard);
 
     }
 

@@ -8,6 +8,7 @@
     <com.zykj.yixiu.widget.MyTopBar
         top:leftdown="@mipmap/u312"
         top:titleText="地址管理"
+        android:id="@+id/mytopbar"
         android:layout_width="match_parent"
         android:layout_height="30dp"></com.zykj.yixiu.widget.MyTopBar>
 
@@ -17,6 +18,7 @@
         android:layout_height="50dp"
         android:background="#ffffff"
         android:gravity="center"
+        android:id="@+id/ll_add"
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="30dp"
@@ -40,6 +42,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:id="@+id/ll_name"
         android:background="#ffffff"
         android:orientation="horizontal">
         <TextView
@@ -47,12 +50,13 @@
             android:layout_height="30dp"
             android:text="姓名"
             android:textSize="20dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             />
         <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:textSize="15dp"
+            android:id="@+id/et_name"
             android:textColorHint="#c4c4c4"
             android:layout_marginLeft="70dp"
             android:hint="请输入你的姓名"/>
@@ -66,6 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#ffffff"
+        android:id="@+id/ll_phone"
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
         <TextView
@@ -74,21 +79,22 @@
             android:text="手机号"
             android:textSize="20dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:textSize="15dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="30dp"
+            android:layout_height="30dp"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_num"
             android:gravity="right"
+            android:layout_marginLeft="30dp"
             android:text="18348690129"/>
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="20dp"
             android:src="@mipmap/u96"/>
     </LinearLayout>
     <ImageView
@@ -99,6 +105,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#ffffff"
+        android:id="@+id/ll_xiangxidizhi"
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
         <TextView
@@ -106,7 +113,7 @@
             android:layout_height="30dp"
             android:text="详细地址"
             android:textSize="20dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             />
         <EditText
             android:layout_width="200dp"
@@ -114,6 +121,7 @@
             android:textSize="15dp"
             android:layout_marginLeft="30dp"
             android:hint="请输入你的详细地址"
+            android:id="@+id/et_dizhi"
             android:textColorHint="#c4c4c4"/>
 
     </LinearLayout>
@@ -122,6 +130,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#ffffff"
+        android:id="@+id/ll_moren"
         android:layout_marginTop="30dp"
         android:orientation="horizontal">
         <TextView
@@ -130,7 +139,7 @@
             android:text="设置默认"
             android:textSize="20dp"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             />
        <Switch
            android:layout_width="match_parent"
@@ -144,6 +153,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#ffffff"
+        android:id="@+id/ll_num"
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
         <TextView
@@ -151,12 +161,13 @@
             android:layout_height="30dp"
             android:text="手机号"
             android:textSize="20dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             />
         <EditText
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:textSize="15dp"
+            android:id="@+id/et_number"
             android:layout_marginLeft="30dp"
             android:hint="请输入你的手机号"
             android:textColorHint="#c4c4c4"/>
@@ -173,4 +184,13 @@
         android:layout_marginTop="20dp"
         android:id="@+id/button" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:background="@mipmap/u2556"
+        android:layout_marginTop="20dp"
+        android:id="@+id/button2" />
 </LinearLayout>

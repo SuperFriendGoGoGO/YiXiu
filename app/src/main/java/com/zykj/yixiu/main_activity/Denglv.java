@@ -70,6 +70,7 @@ public class Denglv extends Activity {
                             User users = JSON.parseObject(result, User.class);
                             Y.USER=users;
                             Y.USER.setUser_id(users.getUser_id());
+                            Y.USER.setPhone(users.getPhone());
                             Y.TOKEN=users.getToken();
 
                                 Y.t("登陆成功----");

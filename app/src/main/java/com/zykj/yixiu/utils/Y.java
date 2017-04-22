@@ -22,7 +22,10 @@ public class Y {
     public static Context context;
     public static boolean isLog = true;
     public static User USER;
-public  static String TOKEN;
+    public static String TOKEN;
+    public static String SHENG;
+    public static String SHI;
+    public static String QU;
 
     public static void t(String str) {//吐司
         Toast.makeText(context, str, Toast.LENGTH_LONG).show();

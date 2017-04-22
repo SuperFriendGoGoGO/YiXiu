@@ -9,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.Y;
 
@@ -158,6 +156,7 @@ public class Personal extends Activity {
             case R.id.ll_myqianbao:
                 break;
             case R.id.ll_mydizhi:
+
                 break;
             case R.id.ll_renzheng:
                 break;

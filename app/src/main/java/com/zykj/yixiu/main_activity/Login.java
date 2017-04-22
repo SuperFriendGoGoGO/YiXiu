@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -41,6 +42,8 @@ public class Login extends Activity {
     MyTopBar mytopbar;
     @Bind(R.id.button2)
     Button button2;
+    @Bind(R.id.iv_fanhui)
+    ImageView ivFanhui;
     private String word;
     private String data;
     private String num;
@@ -58,7 +61,7 @@ public class Login extends Activity {
         }
     }
 
-    @OnClick({R.id.bt_yzm, R.id.button,R.id.button2})
+    @OnClick({R.id.bt_yzm, R.id.button, R.id.button2,R.id.iv_fanhui})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_yzm:
@@ -67,40 +70,41 @@ public class Login extends Activity {
             case R.id.button:
                 if (word.equals("1")) {
                     boolean phoneLegal = isChinaPhoneLegal(etNum.getText().toString());
-                    if (phoneLegal){
+                    if (phoneLegal) {
 
-                    RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/register");
-                    params.addBodyParameter("phone", etNum.getText().toString());
-                    params.addBodyParameter("vcode", "1111");
-                    params.addBodyParameter("tape", "0");
-                    Y.get(params, new Y.MyCommonCall<String>() {
-                        @Override
-                        public void onSuccess(String result) {
-                            if (Y.getRespCode(result)) {
-                                JSONObject jsonObject = JSON.parseObject(result);
-                                String message = jsonObject.getString("message");
-                                data = jsonObject.getString("data");
-                                String resp_code = jsonObject.getString("resp_code");
-                                if (resp_code.equals("0")) {
-                                    Y.t(message);
-                                    num = etNum.getText().toString();
-                                    etNum.setText("");
-                                    etYzm.setText("");
-                                    mytopbar.setTitleText("密码");
-                                    etNum.setHint("请输入你的密码");
-                                    etYzm.setHint("再次输入你的密码");
-                                    btYzm.setVisibility(View.GONE);
-                                    button.setVisibility(View.GONE);
-                                    button2.setVisibility(View.VISIBLE);
+                        RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/register");
+                        params.addBodyParameter("phone", etNum.getText().toString());
+                        params.addBodyParameter("vcode", "1111");
+                        params.addBodyParameter("tape", "0");
+                        Y.get(params, new Y.MyCommonCall<String>() {
+                            @Override
+                            public void onSuccess(String result) {
+                                if (Y.getRespCode(result)) {
+                                    JSONObject jsonObject = JSON.parseObject(result);
+                                    String message = jsonObject.getString("message");
+                                    data = jsonObject.getString("data");
+                                    String resp_code = jsonObject.getString("resp_code");
+                                    if (resp_code.equals("0")) {
+                                        Y.t(message);
+                                        num = etNum.getText().toString();
+                                        etNum.setText("");
+                                        etYzm.setText("");
+                                        mytopbar.setTitleText("密码");
+                                        etNum.setHint("请输入你的密码");
+                                        etYzm.setHint("再次输入你的密码");
+                                        btYzm.setVisibility(View.GONE);
+                                        button.setVisibility(View.GONE);
+                                        button2.setVisibility(View.VISIBLE);
 
+                                    }
+                                } else {
+                                    Y.t("注册异常");
                                 }
-                            } else {
-                                Y.t("注册异常");
                             }
-                        }
-                    });
+                        });
 
-                }}else if (word.equals("2")){
+                    }
+                } else if (word.equals("2")) {
 
                 }
                 break;
@@ -118,9 +122,9 @@ public class Login extends Activity {
                             if (resp_code.equals("0")) {
                                 String yzm = etYzm.getText().toString();
                                 Y.t("完成设置");
-                                Intent intent=new Intent(Login.this,Denglv.class);
-                                intent.putExtra("num",num);
-                                intent.putExtra("yzm",yzm);
+                                Intent intent = new Intent(Login.this, Denglv.class);
+                                intent.putExtra("num", num);
+                                intent.putExtra("yzm", yzm);
                                 startActivity(intent);
                             }
                         } else {
@@ -130,10 +134,14 @@ public class Login extends Activity {
                 });
 
 
-
+                break;
+            case R.id.iv_fanhui:
+                Intent intent=new Intent(this,Denglv.class);
+                startActivity(intent);
                 break;
         }
     }
+
     public static boolean isChinaPhoneLegal(String str)
             throws PatternSyntaxException {
         String regExp = "^((13[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(147,145))\\d{8}$";

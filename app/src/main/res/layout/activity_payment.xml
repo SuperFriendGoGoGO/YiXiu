@@ -6,11 +6,27 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
-    <com.zykj.yixiu.widget.MyTopBar
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        top:leftdown="@mipmap/u312"
-        top:titleText="支付详情"></com.zykj.yixiu.widget.MyTopBar>
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_didian"
+            android:layout_gravity="center"
+            android:src="@mipmap/u312"
+            />
+        <com.zykj.yixiu.widget.MyTopBar
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:padding="5dp"
+            top:titleText="支付详情"
+            top:textColor="#00cccc"
+            ></com.zykj.yixiu.widget.MyTopBar>
+    </LinearLayout>
 
     <include layout="@layout/tool_line"></include>
 

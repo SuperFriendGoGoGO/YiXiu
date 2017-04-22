@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import com.zykj.yixiu.R;
 
 import java.util.Calendar;
 import java.util.Date;
-
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,6 +46,8 @@ public class AttendantCall extends Activity {
     LinearLayout llAddress;
     @Bind(R.id.bt_service)
     Button btService;
+    @Bind(R.id.iv_fanhui)
+    ImageView ivFanhui;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class AttendantCall extends Activity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.im_servicetime, R.id.iv_address, R.id.bt_service, R.id.ll_time, R.id.ll_address})
+    @OnClick({R.id.im_servicetime, R.id.iv_address, R.id.bt_service, R.id.ll_time, R.id.ll_address,R.id.iv_fanhui})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.im_servicetime:
@@ -64,7 +64,9 @@ public class AttendantCall extends Activity {
             case R.id.iv_address:
                 break;
             case R.id.bt_service:
+                //判断 控件内容是否为空
                 if (!tvAddress.getText().toString().isEmpty() && !tvServicetime.getText().toString().isEmpty()) {
+                    //自定义对话框
                     LayoutInflater inflater = getLayoutInflater();
                     View layout = inflater.inflate(R.layout.tool_dialog,
                             (ViewGroup) findViewById(R.id.dialog));
@@ -75,10 +77,11 @@ public class AttendantCall extends Activity {
                 }
                 break;
             case R.id.ll_time:
+                //三级联动 设置时间
                 TimePickerView pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
                     @Override
                     public void onTimeSelect(Date date, View v) {//选中事件回调
-                       tvServicetime.setText(getTime(date));
+                        tvServicetime.setText(getTime(date));
                     }
                 })
                         .build();
@@ -86,9 +89,16 @@ public class AttendantCall extends Activity {
                 pvTime.show();
                 break;
             case R.id.ll_address:
-                Intent intent=new Intent(this,MyMap.class);
-               startActivity(intent);
+                //跳转到map地图
+                Intent intent = new Intent(this, MyMap.class);
+                startActivity(intent);
                 break;
+            case R.id.iv_fanhui:
+                //跳转到维修
+                Intent intent2 = new Intent(this, Maintain.class);
+                startActivity(intent2);
+                break;
+
         }
     }
 

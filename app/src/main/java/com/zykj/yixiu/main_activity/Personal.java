@@ -79,6 +79,8 @@ public class Personal extends Activity {
     ImageView ivSet;
     @Bind(R.id.ll_set)
     LinearLayout llSet;
+    @Bind(R.id.iv_fanhui)
+    ImageView ivFanhui;
     private String photoPath;
     private String didian;
     private String chengshi;
@@ -96,7 +98,7 @@ public class Personal extends Activity {
     }
 
 
-    @OnClick({R.id.iv_hard, R.id.fl_undone, R.id.ll_accomplish, R.id.abolish, R.id.ll_myziliao, R.id.ll_myqianbao, R.id.ll_mydizhi, R.id.ll_renzheng, R.id.ll_pingtai, R.id.ll_set})
+    @OnClick({R.id.iv_fanhui,R.id.iv_hard, R.id.fl_undone, R.id.ll_accomplish, R.id.abolish, R.id.ll_myziliao, R.id.ll_myqianbao, R.id.ll_mydizhi, R.id.ll_renzheng, R.id.ll_pingtai, R.id.ll_set})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_hard:
@@ -153,29 +155,35 @@ public class Personal extends Activity {
             case R.id.ll_myziliao:
                 //完善个人资料
                 Intent intent4 = new Intent(this, MyZiLiao.class);
-                intent4.putExtra("didian",didian);
-                intent4.putExtra("chengshi",chengshi);
+                intent4.putExtra("didian", didian);
+                intent4.putExtra("chengshi", chengshi);
                 startActivity(intent4);
                 break;
             case R.id.ll_myqianbao:
                 break;
             case R.id.ll_mydizhi:
                 //增加地址或查看地址
-                Intent intent5 = new Intent(this,MyDizhi.class);
+                Intent intent5 = new Intent(this, MyDizhi.class);
                 startActivity(intent5);
                 break;
             case R.id.ll_renzheng:
                 //跳转页面——————认证身份证
-                Intent intent6 = new Intent(this,RenZheng.class);
+                Intent intent6 = new Intent(this, RenZheng.class);
                 startActivity(intent6);
                 break;
             case R.id.ll_pingtai:
                 //跳转页面——————平台服务
-                Intent intent7 = new Intent(this,PingTai.class);
+                Intent intent7 = new Intent(this, PingTai.class);
                 startActivity(intent7);
                 break;
             case R.id.ll_set:
                 break;
+            case R.id.iv_fanhui:
+                Intent intent8=new Intent(this,Activity_Main.class);
+                startActivity(intent8);
+                break;
         }
     }
+
+
 }

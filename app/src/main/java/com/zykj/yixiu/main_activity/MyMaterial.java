@@ -1,8 +1,10 @@
 package com.zykj.yixiu.main_activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -27,6 +29,10 @@ public class MyMaterial extends Activity {
     LinearLayout llNumber;
     @Bind(R.id.ll_address)
     LinearLayout llAddress;
+    @Bind(R.id.iv_fanhui)
+    ImageView ivFanhui;
+    @Bind(R.id.bt_tijiao)
+    Button btTijiao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,7 @@ public class MyMaterial extends Activity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.iv_hard, R.id.iv_hongdian, R.id.iv_huidian, R.id.ll_number, R.id.ll_address})
+    @OnClick({R.id.iv_hard, R.id.iv_hongdian, R.id.iv_huidian, R.id.ll_number, R.id.ll_address,R.id.iv_fanhui})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_hard:
@@ -51,6 +57,10 @@ public class MyMaterial extends Activity {
             case R.id.ll_number:
                 break;
             case R.id.ll_address:
+                break;
+            case R.id.iv_fanhui:
+                Intent intent=new Intent(this,Personal.class);
+                startActivity(intent);
                 break;
         }
     }

@@ -6,14 +6,27 @@
     android:background="#f2f2f2"
     android:orientation="vertical">
 
-    <com.zykj.yixiu.widget.MyTopBar
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:background="#00cccc"
-        top:leftdown="@mipmap/u660"
-        top:textColor="#ffffff"
-        top:titleText="个人中心"></com.zykj.yixiu.widget.MyTopBar>
-
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_fanhui"
+            android:layout_gravity="center"
+            android:src="@mipmap/u660"
+            />
+        <com.zykj.yixiu.widget.MyTopBar
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="#00cccc"
+            android:padding="5dp"
+            top:titleText="个人资料"
+            top:textColor="#ffffff"
+            ></com.zykj.yixiu.widget.MyTopBar>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"

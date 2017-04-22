@@ -39,13 +39,35 @@
                 <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
         </activity>
+        <!--手机电脑家电维修-->
        <activity android:name=".main_activity.Maintain"></activity>
-        <activity android:name=".main_activity.PersonalCenter"></activity>
+        <!--呼叫服务-->
         <activity android:name=".main_activity.AttendantCall"></activity>
+        <!--注册-->
         <activity android:name=".main_activity.Login"></activity>
+        <!--主页-->
         <activity android:name=".main_activity.Activity_Main"></activity>
+        <!--我的资料-->
         <activity android:name=".main_activity.Personal"></activity>
+        <!--资料修改-->
         <activity android:name=".main_activity.MyZiLiao"></activity>
+        <!--关于我们-->
+        <activity android:name=".main_activity.About"></activity>
+        <!--地址管理 增-->
+        <activity android:name=".main_activity.MyDizhi"></activity>
+        <!--地图-->
+        <activity android:name=".main_activity.MyMap"></activity>
+        <!--我的订单-->
+        <activity android:name=".main_activity.MyOrder"></activity>
+        <!--一休哥咨询-->
+        <activity android:name=".main_activity.ZiXun"></activity>
+        <!--认证信息-->
+        <activity android:name=".main_activity.RenZheng"></activity>
+        <!--平台服务-->
+        <activity android:name=".main_activity.PingTai"></activity>
+        <!--个人资料-->
+        <activity android:name=".main_activity.MyMaterial"></activity>
+
 
     </application>
 

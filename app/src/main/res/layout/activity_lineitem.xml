@@ -4,24 +4,33 @@
     xmlns:top="http://schemas.android.com/apk/res-auto"
     android:background="#f2f2f2"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#ffffff"
-        android:orientation="horizontal">
-        <com.zykj.yixiu.widget.MyTopBar
-            top:leftdown="@mipmap/u312"
-            top:titleText="           订单详情"
-            android:background="#ffffff"
-            android:layout_width="300dp"
-            android:layout_height="30dp"></com.zykj.yixiu.widget.MyTopBar>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_didian"
+                android:layout_gravity="center"
+                android:src="@mipmap/u312"
+                />
+            <com.zykj.yixiu.widget.MyTopBar
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:background="#ffffff"
+                android:padding="5dp"
+                top:titleText="我的订单"
+                top:textColor="#00cccc"
+                ></com.zykj.yixiu.widget.MyTopBar>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:text="删除订单"
             android:textSize="18dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:textColor="#00cccc"/>
     </LinearLayout>
     <include layout="@layout/tool_line"></include>

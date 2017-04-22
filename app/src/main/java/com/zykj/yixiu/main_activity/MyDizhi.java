@@ -6,12 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
 import com.zykj.yixiu.R;
-import com.zykj.yixiu.utils.User;
 import com.zykj.yixiu.utils.Y;
 import com.zykj.yixiu.widget.MyTopBar;
 
@@ -52,6 +51,8 @@ public class MyDizhi extends Activity {
     Button button2;
     @Bind(R.id.mytopbar)
     MyTopBar mytopbar;
+    @Bind(R.id.iv_fanhui)
+    ImageView ivFanhui;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class MyDizhi extends Activity {
         button2.setVisibility(View.GONE);
     }
 
-    @OnClick({R.id.ll_add, R.id.tv_num, R.id.button, R.id.button2})
+    @OnClick({R.id.ll_add, R.id.tv_num, R.id.button, R.id.button2,R.id.iv_fanhui})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_add:
@@ -93,21 +94,21 @@ public class MyDizhi extends Activity {
                 RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/addaddress");
                 params.addBodyParameter("name", etName.getText().toString());
                 params.addBodyParameter("address", etDizhi.getText().toString());
-                params.addBodyParameter("phone",tvNum.getText().toString());
-                params.addBodyParameter("user_id",Y.USER.getUser_id()+"");
-                params.addBodyParameter("region",Y.QU);
-                params.addBodyParameter("lat","");
-                params.addBodyParameter("lon","");
-                params.addBodyParameter("city_name","");
-                params.addBodyParameter("city_code","");
-                params.addBodyParameter("isdefault",0+"");
+                params.addBodyParameter("phone", tvNum.getText().toString());
+                params.addBodyParameter("user_id", Y.USER.getUser_id() + "");
+                params.addBodyParameter("region", Y.QU);
+                params.addBodyParameter("lat", "");
+                params.addBodyParameter("lon", "");
+                params.addBodyParameter("city_name", "");
+                params.addBodyParameter("city_code", "");
+                params.addBodyParameter("isdefault", 0 + "");
 
                 Y.get(params, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {
                             Y.t("设置成功----");
-                            Intent intent=new Intent(MyDizhi.this,Activity_Main.class);
+                            Intent intent = new Intent(MyDizhi.this, Activity_Main.class);
                             startActivity(intent);
 
 
@@ -125,6 +126,10 @@ public class MyDizhi extends Activity {
                 llXiangxidizhi.setVisibility(View.VISIBLE);
                 button.setVisibility(View.VISIBLE);
                 tvNum.setText(etNumber.getText().toString());
+                break;
+            case R.id.iv_fanhui:
+                Intent intent=new Intent(this,Personal.class);
+                startActivity(intent);
                 break;
         }
     }

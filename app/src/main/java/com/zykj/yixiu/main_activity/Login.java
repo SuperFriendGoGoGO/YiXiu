@@ -117,16 +117,14 @@ public class Login extends Activity {
                     @Override
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {
-                            JSONObject jsonObject = JSON.parseObject(result);
-                            String resp_code = jsonObject.getString("resp_code");
-                            if (resp_code.equals("0")) {
+
                                 String yzm = etYzm.getText().toString();
                                 Y.t("完成设置");
                                 Intent intent = new Intent(Login.this, Denglv.class);
                                 intent.putExtra("num", num);
                                 intent.putExtra("yzm", yzm);
                                 startActivity(intent);
-                            }
+
                         } else {
                             Y.t("注册异常");
                         }

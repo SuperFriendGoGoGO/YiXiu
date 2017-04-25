@@ -127,14 +127,20 @@ public class Activity_Main extends Activity {
                             params.addBodyParameter("order_type",UserUtils.ORDER_TYPE);
                             params.addBodyParameter("brand",UserUtils.BRAND);
                             params.addBodyParameter("model",UserUtils.MODEL);
-                            params.addBodyParameter("brand",UserUtils.BRAND);
-                            params.addBodyParameter("brand",UserUtils.BRAND);
-                            params.addBodyParameter("brand",UserUtils.BRAND);
-                            params.addBodyParameter("brand",UserUtils.BRAND);
-                            params.addBodyParameter("brand",UserUtils.BRAND);
+                            params.addBodyParameter("fault",UserUtils.FAULT);
+                            params.addBodyParameter("fault_desc",UserUtils.FAULT_DESC);
+                            params.addBodyParameter("category",UserUtils.CATEGORY);
+                            params.addBodyParameter("image1",UserUtils.IMAGE1);
+                            params.addBodyParameter("service_time",UserUtils.SERVICE_TIME);
+                            params.addBodyParameter("service_address",UserUtils.SERVICE_ADDRESS);
+                            params.addBodyParameter("custom_phone",UserUtils.CUSTOM_PHONE);
+                            params.addBodyParameter("custom_name",UserUtils.CUSTOM_NAME);
+                            params.addBodyParameter("custom_id",UserUtils.CUSTOM_ID);
+                            params.addBodyParameter("address_id",UserUtils.ADDRESS_ID);
                             Y.post(params, new Y.MyCommonCall<String>() {
                                 @Override
                                 public void onSuccess(String result) {
+                                    Y.t("上传成功");
                                     if (Y.getRespCode(result)) {
 
                                         OptionsPickerView opv = new OptionsPickerView.Builder(Activity_Main.this, new OptionsPickerView.OnOptionsSelectListener() {

@@ -16,7 +16,7 @@ public class UserUtils {
     public static String SERVICE_ADDRESS;
     public static String CUSTOM_PHONE;
     public static String CUSTOM_NAME;
-    public static String CUSTOM_ID;
+    public static String CUSTOM_ID="1";
 
     public static String getOrderType() {
         return ORDER_TYPE;

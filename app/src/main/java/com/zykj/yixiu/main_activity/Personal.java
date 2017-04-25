@@ -3,6 +3,7 @@ package com.zykj.yixiu.main_activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.Y;
 
 import org.xutils.http.RequestParams;
+import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
 import java.io.File;
@@ -93,6 +95,12 @@ public class Personal extends Activity {
         Intent intent = getIntent();
         didian = intent.getStringExtra("didian");
         chengshi = intent.getStringExtra("chengshi");
+        if (!TextUtils.isEmpty(Y.USER.getIcon())){
+            ImageOptions imageOptions=new ImageOptions.Builder()
+                    .setCircular(true)
+                    .build();
+            x.image().bind(ivHard,Y.USER.getIcon(),imageOptions);
+        }
 
 
     }
@@ -108,7 +116,10 @@ public class Personal extends Activity {
                         if (reqeustCode == 100) {
                             PhotoInfo info = resultList.get(0);
                             photoPath = info.getPhotoPath();
-                            x.image().bind(ivHard, new File(photoPath).toURI().toString());
+                            ImageOptions imageOptions=new ImageOptions.Builder()
+                                    .setCircular(true)
+                                    .build();
+                            x.image().bind(ivHard,photoPath,imageOptions);
                         }
 
                     }
@@ -122,7 +133,7 @@ public class Personal extends Activity {
                 params.addBodyParameter("icon", photoPath);
                 params.addBodyParameter("token", Y.TOKEN);
 
-                Y.get(params, new Y.MyCommonCall<String>() {
+                Y.post(params, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {

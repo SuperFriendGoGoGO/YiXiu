@@ -63,7 +63,7 @@ public class Denglv extends Activity {
                 params.addBodyParameter("phone", etUser.getText().toString());
                 params.addBodyParameter("password", etPassword.getText().toString());
 
-                Y.get(params, new Y.MyCommonCall<String>() {
+                Y.post(params, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {

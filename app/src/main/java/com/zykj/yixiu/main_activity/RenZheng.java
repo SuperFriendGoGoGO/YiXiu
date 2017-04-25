@@ -93,7 +93,7 @@ public class RenZheng extends Activity {
                 params.addBodyParameter("idcard_image2", photoPath2);//添加参数
                 params.addBodyParameter("token", Y.TOKEN);//添加参数
 
-                Y.get(params, new Y.MyCommonCall<String>() {
+                Y.post(params, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {

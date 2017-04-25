@@ -86,7 +86,7 @@ public class MyZiLiao extends Activity {
                     params.addBodyParameter("city", didian);
                     params.addBodyParameter("user_id",Y.USER.getUser_id()+"");
                     params.addBodyParameter("token",Y.TOKEN);
-                    Y.get(params, new Y.MyCommonCall<String>() {
+                    Y.post(params, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
                             if (Y.getRespCode(result)) {

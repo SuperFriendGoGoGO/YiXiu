@@ -76,7 +76,7 @@ public class Login extends Activity {
                         params.addBodyParameter("phone", etNum.getText().toString());
                         params.addBodyParameter("vcode", "1111");
                         params.addBodyParameter("tape", "0");
-                        Y.get(params, new Y.MyCommonCall<String>() {
+                        Y.post(params, new Y.MyCommonCall<String>() {
                             @Override
                             public void onSuccess(String result) {
                                 if (Y.getRespCode(result)) {
@@ -113,7 +113,7 @@ public class Login extends Activity {
                 params.addBodyParameter("password", etNum.getText().toString());
                 params.addBodyParameter("token", data);
 
-                Y.get(params, new Y.MyCommonCall<String>() {
+                Y.post(params, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {

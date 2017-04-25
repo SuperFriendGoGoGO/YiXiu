@@ -103,7 +103,7 @@ public class MyDizhi extends Activity {
                 params.addBodyParameter("city_code", "");
                 params.addBodyParameter("isdefault", 0 + "");
 
-                Y.get(params, new Y.MyCommonCall<String>() {
+                Y.post(params, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {

@@ -1,14 +1,21 @@
 package com.zykj.yixiu.main_activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.bigkoo.pickerview.OptionsPickerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.youth.banner.Banner;
@@ -16,8 +23,12 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.utils.MobileBean;
 import com.zykj.yixiu.utils.OptionsPicke;
 import com.zykj.yixiu.utils.Y;
+import com.zykj.yixiu.widget.UserUtils;
+
+import org.xutils.http.RequestParams;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,6 +110,50 @@ public class Activity_Main extends Activity {
                 });
             }
         });
+        Intent intent=getIntent();
+        String extra = intent.getStringExtra("1");
+        if (extra.equals("1")){
+            //自定义对话框
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.tool_dialog,
+                    (ViewGroup) findViewById(R.id.dialog));
+
+            new AlertDialog.Builder(this).setView(layout)
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //上传订单
+                            RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/addOrder");
+                            params.addBodyParameter("order_type",UserUtils.ORDER_TYPE);
+                            params.addBodyParameter("brand",UserUtils.BRAND);
+                            params.addBodyParameter("model",UserUtils.MODEL);
+                            params.addBodyParameter("brand",UserUtils.BRAND);
+                            params.addBodyParameter("brand",UserUtils.BRAND);
+                            params.addBodyParameter("brand",UserUtils.BRAND);
+                            params.addBodyParameter("brand",UserUtils.BRAND);
+                            params.addBodyParameter("brand",UserUtils.BRAND);
+                            Y.post(params, new Y.MyCommonCall<String>() {
+                                @Override
+                                public void onSuccess(String result) {
+                                    if (Y.getRespCode(result)) {
+
+                                        OptionsPickerView opv = new OptionsPickerView.Builder(Activity_Main.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                            @Override
+                                            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+
+                                            }
+                                        }).build();
+
+                                    } else {
+                                        Y.t("解析异常");
+                                    }
+                                }
+                            });
+
+                        }
+                    })
+                    .setNegativeButton("取消", null).show();
+        }
 
 
     }
@@ -109,15 +164,18 @@ public class Activity_Main extends Activity {
         switch (view.getId()) {
             case R.id.mobile:
                 Intent mobileintent = new Intent(this, Maintain.class);
+                UserUtils.ORDER_TYPE="手机";
                 mobileintent.putExtra("mark", "1");
                 startActivity(mobileintent);
                 break;
             case R.id.computer:
+                UserUtils.ORDER_TYPE="电脑";
                 Intent computerintent = new Intent(this, Maintain.class);
                 computerintent.putExtra("mark", "2");
                 startActivity(computerintent);
                 break;
             case R.id.appliances:
+                UserUtils.ORDER_TYPE="家电";
                 Intent appliancesintent = new Intent(this, Maintain.class);
                 appliancesintent.putExtra("mark", "3");
                 startActivity(appliancesintent);

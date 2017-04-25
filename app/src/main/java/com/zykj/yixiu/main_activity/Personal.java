@@ -119,7 +119,7 @@ public class Personal extends Activity {
                             ImageOptions imageOptions=new ImageOptions.Builder()
                                     .setCircular(true)
                                     .build();
-                            x.image().bind(ivHard,photoPath,imageOptions);
+                            x.image().bind(ivHard,Y.USER.getIcon(),imageOptions);
                         }
 
                     }
@@ -130,6 +130,7 @@ public class Personal extends Activity {
                     }
                 });
                 RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/uploadIcon");
+                params.setMultipart(true);
                 params.addBodyParameter("icon", photoPath);
                 params.addBodyParameter("token", Y.TOKEN);
 

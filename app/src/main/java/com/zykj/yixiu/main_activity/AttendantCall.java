@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.widget.UserUtils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -54,9 +55,12 @@ public class AttendantCall extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendantcall);
         ButterKnife.bind(this);
+        tvAddress.setText("山东");
+        UserUtils.SERVICE_ADDRESS=tvAddress.getText().toString();
+
     }
 
-    @OnClick({R.id.im_servicetime, R.id.iv_address, R.id.bt_service, R.id.ll_time, R.id.ll_address,R.id.iv_fanhui})
+    @OnClick({R.id.im_servicetime, R.id.iv_address, R.id.bt_service, R.id.ll_time, R.id.ll_address, R.id.iv_fanhui})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.im_servicetime:
@@ -66,14 +70,10 @@ public class AttendantCall extends Activity {
             case R.id.bt_service:
                 //判断 控件内容是否为空
                 if (!tvAddress.getText().toString().isEmpty() && !tvServicetime.getText().toString().isEmpty()) {
-                    //自定义对话框
-                    LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.tool_dialog,
-                            (ViewGroup) findViewById(R.id.dialog));
+                    Intent intent = new Intent(this, Activity_Main.class);
+                    intent.putExtra("1", "1");
+                    startActivity(intent);
 
-                    new AlertDialog.Builder(this).setView(layout)
-                            .setPositiveButton("确定", null)
-                            .setNegativeButton("取消", null).show();
                 }
                 break;
             case R.id.ll_time:
@@ -82,6 +82,7 @@ public class AttendantCall extends Activity {
                     @Override
                     public void onTimeSelect(Date date, View v) {//选中事件回调
                         tvServicetime.setText(getTime(date));
+                        UserUtils.SERVICE_TIME=tvServicetime.getText().toString();
                     }
                 })
                         .build();
@@ -90,8 +91,8 @@ public class AttendantCall extends Activity {
                 break;
             case R.id.ll_address:
                 //跳转到map地图
-                Intent intent = new Intent(this, MyMap.class);
-                startActivity(intent);
+//                Intent intent = new Intent(this, MyMap.class);
+//                startActivity(intent);
                 break;
             case R.id.iv_fanhui:
                 //跳转到维修

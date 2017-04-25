@@ -27,6 +27,7 @@ public class Y {
     public static String SHI;
     public static String QU;
 
+
     public static void t(String str) {//吐司
         Toast.makeText(context, str, Toast.LENGTH_LONG).show();
     }

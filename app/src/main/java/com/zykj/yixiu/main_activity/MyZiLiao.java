@@ -3,6 +3,7 @@ package com.zykj.yixiu.main_activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +16,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.Y;
+import com.zykj.yixiu.widget.UserUtils;
 
 import org.xutils.http.RequestParams;
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
 
 import java.io.File;
 
@@ -59,7 +63,15 @@ public class MyZiLiao extends Activity {
         Intent intent=getIntent();
         didian = intent.getStringExtra("didian");
         chengshi = intent.getStringExtra("chengshi");
+       UserUtils.CUSTOM_NAME=Y.USER.getUsername();
+        UserUtils.CUSTOM_PHONE=Y.USER.getPhone();
+               Y.USER.setUsername(etName.getText().toString());
+        Y.USER.setPhone(etNum.getText().toString());
+        Y.USER.setSex(sex);
         Glide.with(this).load(Y.USER.getIcon()).into(ivHard);
+        if (!TextUtils.isEmpty(Y.USER.getUsername())){
+          etName.setText(Y.USER.getUsername());
+        }
 
     }
 
@@ -71,11 +83,13 @@ public class MyZiLiao extends Activity {
                 ivHongdian.setImageResource(R.mipmap.u1108);
                 ivHuidian.setImageResource(R.mipmap.u1112);
                 sex = "男";
+                Y.USER.setSex(sex);
                 break;
             case R.id.iv_huidian:
                 ivHuidian.setImageResource(R.mipmap.u1108);
                 ivHongdian.setImageResource(R.mipmap.u1112);
                 sex = "女";
+                Y.USER.setSex(sex);
                 break;
             case R.id.bt_tijiao:
                 if (!etName.getText().toString().isEmpty() && !etNum.getText().toString().isEmpty() && !tvDizhi.getText().toString().isEmpty()) {

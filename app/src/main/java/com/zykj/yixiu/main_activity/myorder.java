@@ -20,6 +20,10 @@ import butterknife.OnClick;
  */
 
 public class MyOrder extends Activity {
+
+
+    @Bind(R.id.iv_fanhui)
+    ImageView ivFanhui;
     @Bind(R.id.tv_wei)
     TextView tvWei;
     @Bind(R.id.tv_yi)
@@ -48,8 +52,6 @@ public class MyOrder extends Activity {
     Button btChakan2;
     @Bind(R.id.bt_quxiao2)
     Button btQuxiao2;
-    @Bind(R.id.iv_fanhui)
-    ImageView ivFanhui;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +94,7 @@ public class MyOrder extends Activity {
         }
     }
 
-    @OnClick({R.id.iv_fanhui,R.id.iv_hard, R.id.tv_wei, R.id.tv_yi, R.id.tv_quxiao, R.id.bt_chakan1, R.id.bt_quxiao1, R.id.bt_chakan2, R.id.bt_quxiao2})
+    @OnClick({R.id.iv_fanhui, R.id.iv_hard, R.id.tv_wei, R.id.tv_yi, R.id.tv_quxiao, R.id.bt_chakan1, R.id.bt_quxiao1, R.id.bt_chakan2, R.id.bt_quxiao2})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_wei:
@@ -141,7 +143,7 @@ public class MyOrder extends Activity {
 
                 break;
             case R.id.iv_fanhui:
-                Intent intent=new Intent(this,Personal.class);
+                Intent intent = new Intent(this, Personal.class);
                 startActivity(intent);
                 break;
         }

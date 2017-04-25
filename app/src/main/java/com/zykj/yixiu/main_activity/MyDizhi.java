@@ -25,6 +25,10 @@ import butterknife.OnClick;
  */
 
 public class MyDizhi extends Activity {
+
+
+    @Bind(R.id.iv_fanhui)
+    ImageView ivFanhui;
     @Bind(R.id.ll_add)
     LinearLayout llAdd;
     @Bind(R.id.et_name)
@@ -51,8 +55,6 @@ public class MyDizhi extends Activity {
     Button button2;
     @Bind(R.id.mytopbar)
     MyTopBar mytopbar;
-    @Bind(R.id.iv_fanhui)
-    ImageView ivFanhui;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class MyDizhi extends Activity {
         button2.setVisibility(View.GONE);
     }
 
-    @OnClick({R.id.ll_add, R.id.tv_num, R.id.button, R.id.button2,R.id.iv_fanhui})
+    @OnClick({R.id.ll_add, R.id.tv_num, R.id.button, R.id.button2, R.id.iv_fanhui})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_add:
@@ -128,7 +130,7 @@ public class MyDizhi extends Activity {
                 tvNum.setText(etNumber.getText().toString());
                 break;
             case R.id.iv_fanhui:
-                Intent intent=new Intent(this,Personal.class);
+                Intent intent = new Intent(this, Personal.class);
                 startActivity(intent);
                 break;
         }

@@ -97,99 +97,53 @@ public class Activity_Main extends Activity {
         tvDidian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OptionsPicke optionsPicke=new OptionsPicke();
+                //三级联动
+                OptionsPicke optionsPicke = new OptionsPicke();
                 optionsPicke.showOptionsPicke(Activity_Main.this, new OptionsPicke.OptionsSelectListener() {
                     @Override
                     public void selectListener(String province, String city, String district) {
                         tvDidian.setText(city);
                         sheng = province;
-                        Y.SHENG=province;
-                        Y.SHI=city;
-                        Y.QU=district;
+                        Y.SHENG = province;
+                        Y.SHI = city;
+                        Y.QU = district;
                     }
                 });
             }
         });
-        Intent intent=getIntent();
-        String extra = intent.getStringExtra("1");
-        if (extra.equals("1")){
-            //自定义对话框
-            LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.tool_dialog,
-                    (ViewGroup) findViewById(R.id.dialog));
-
-            new AlertDialog.Builder(this).setView(layout)
-                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            //上传订单
-                            RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/addOrder");
-                            params.addBodyParameter("order_type",UserUtils.ORDER_TYPE);
-                            params.addBodyParameter("brand",UserUtils.BRAND);
-                            params.addBodyParameter("model",UserUtils.MODEL);
-                            params.addBodyParameter("fault",UserUtils.FAULT);
-                            params.addBodyParameter("fault_desc",UserUtils.FAULT_DESC);
-                            params.addBodyParameter("category",UserUtils.CATEGORY);
-                            params.addBodyParameter("image1",UserUtils.IMAGE1);
-                            params.addBodyParameter("service_time",UserUtils.SERVICE_TIME);
-                            params.addBodyParameter("service_address",UserUtils.SERVICE_ADDRESS);
-                            params.addBodyParameter("custom_phone",UserUtils.CUSTOM_PHONE);
-                            params.addBodyParameter("custom_name",UserUtils.CUSTOM_NAME);
-                            params.addBodyParameter("custom_id",UserUtils.CUSTOM_ID);
-                            params.addBodyParameter("address_id",UserUtils.ADDRESS_ID);
-                            Y.post(params, new Y.MyCommonCall<String>() {
-                                @Override
-                                public void onSuccess(String result) {
-                                    Y.t("上传成功");
-                                    if (Y.getRespCode(result)) {
-
-                                        OptionsPickerView opv = new OptionsPickerView.Builder(Activity_Main.this, new OptionsPickerView.OnOptionsSelectListener() {
-                                            @Override
-                                            public void onOptionsSelect(int options1, int options2, int options3, View v) {
-
-                                            }
-                                        }).build();
-
-                                    } else {
-                                        Y.t("解析异常");
-                                    }
-                                }
-                            });
-
-                        }
-                    })
-                    .setNegativeButton("取消", null).show();
-        }
 
 
     }
 
+
+
+
     //设置传入标识符 让——修理——页面识别
-    @OnClick({R.id.mobile, R.id.computer, R.id.appliances,R.id.iv_gereb})
+    @OnClick({R.id.mobile, R.id.computer, R.id.appliances, R.id.iv_gereb})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mobile:
                 Intent mobileintent = new Intent(this, Maintain.class);
-                UserUtils.ORDER_TYPE="手机";
+                UserUtils.ORDER_TYPE = "手机";
                 mobileintent.putExtra("mark", "1");
                 startActivity(mobileintent);
                 break;
             case R.id.computer:
-                UserUtils.ORDER_TYPE="电脑";
+                UserUtils.ORDER_TYPE = "电脑";
                 Intent computerintent = new Intent(this, Maintain.class);
                 computerintent.putExtra("mark", "2");
                 startActivity(computerintent);
                 break;
             case R.id.appliances:
-                UserUtils.ORDER_TYPE="家电";
+                UserUtils.ORDER_TYPE = "家电";
                 Intent appliancesintent = new Intent(this, Maintain.class);
                 appliancesintent.putExtra("mark", "3");
                 startActivity(appliancesintent);
                 break;
             case R.id.iv_gereb:
                 Intent gerebintent = new Intent(this, Personal.class);
-                gerebintent.putExtra("didian",sheng);
-                gerebintent.putExtra("chengshi",tvDidian.getText().toString());
+                gerebintent.putExtra("didian", sheng);
+                gerebintent.putExtra("chengshi", tvDidian.getText().toString());
                 startActivity(gerebintent);
                 break;
         }

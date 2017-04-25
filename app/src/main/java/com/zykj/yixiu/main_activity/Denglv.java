@@ -59,6 +59,7 @@ public class Denglv extends Activity {
     @OnClick({R.id.bt_ensure, R.id.tv_login, R.id.tv_forget})
     public void onClick(View view) {
         switch (view.getId()) {
+            //登录
             case R.id.bt_ensure:
                 RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/login");
                 params.addBodyParameter("phone", etUser.getText().toString());
@@ -70,11 +71,10 @@ public class Denglv extends Activity {
                         if (Y.getRespCode(result)) {
                             User users = JSON.parseObject(result, User.class);
                             Y.USER=users;
-                            Y.USER.setUser_id(users.getUser_id());
-                            Y.USER.setPhone(users.getPhone());
                             Y.TOKEN=users.getToken();
 
                                 Y.t("登陆成功----");
+                            //跳转
                                 Intent intent=new Intent(Denglv.this,Activity_Main.class);
                                 startActivity(intent);
 
@@ -86,11 +86,13 @@ public class Denglv extends Activity {
                 });
                 break;
             case R.id.tv_login:
+                //注册
                 Intent intent=new Intent(this,Login.class);
                 intent.putExtra("word","1");
                 startActivity(intent);
                 break;
             case R.id.tv_forget:
+                //忘记
                 Intent intent2=new Intent(this,Login.class);
                 intent2.putExtra("word","2");
                 startActivity(intent2);

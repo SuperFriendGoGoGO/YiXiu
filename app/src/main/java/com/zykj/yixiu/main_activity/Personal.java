@@ -25,6 +25,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 /**
  * Created by zykj on 2017/4/19.
@@ -95,11 +97,11 @@ public class Personal extends Activity {
         Intent intent = getIntent();
         didian = intent.getStringExtra("didian");
         chengshi = intent.getStringExtra("chengshi");
-        if (!TextUtils.isEmpty(Y.USER.getIcon())){
+        if (TextUtils.isEmpty(Y.USER.getIcon())){
             ImageOptions imageOptions=new ImageOptions.Builder()
                     .setCircular(true)
                     .build();
-            x.image().bind(ivHard,Y.USER.getIcon(),imageOptions);
+            x.image().bind(ivHard,photoPath,imageOptions);
         }
 
 
@@ -116,10 +118,50 @@ public class Personal extends Activity {
                         if (reqeustCode == 100) {
                             PhotoInfo info = resultList.get(0);
                             photoPath = info.getPhotoPath();
-                            ImageOptions imageOptions=new ImageOptions.Builder()
+                            Y.USER.setIcon(photoPath);
+                            final ImageOptions imageOptions=new ImageOptions.Builder()
                                     .setCircular(true)
                                     .build();
-                            x.image().bind(ivHard,Y.USER.getIcon(),imageOptions);
+
+                            final RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/uploadIcon");
+                            //压缩
+                            Luban.get(Personal.this)
+                                    .load(new File(photoPath))
+                                    .putGear(Luban.THIRD_GEAR)
+                                    .setCompressListener(new OnCompressListener() {
+                                        @Override
+                                        public void onStart() {
+                                            Y.t("压缩开始");
+                                        }
+
+                                        @Override
+                                        public void onSuccess(final File file) {
+
+                                            params.setMultipart(true);
+                                            params.addBodyParameter("icon", file);
+                                            params.addBodyParameter("token", Y.TOKEN);
+                                            Y.post(params, new Y.MyCommonCall<String>() {
+                                                @Override
+                                                public void onSuccess(String result) {
+                                                    if (Y.getRespCode(result)) {
+                                                        Y.USER.setIcon(Y.getData(result));
+                                                        Y.t("上传正常");
+                                                        x.image().bind(ivHard,photoPath,imageOptions);
+                                                    } else {
+                                                        Y.t("上传异常");
+                                                    }
+                                                }
+                                            });
+                                        }
+
+                                        @Override
+                                        public void onError(Throwable e) {
+                                            Y.t("压缩出错");
+                                        }
+                                    }).launch();
+
+
+
                         }
 
                     }
@@ -127,22 +169,6 @@ public class Personal extends Activity {
                     @Override
                     public void onHanlderFailure(int requestCode, String errorMsg) {
 
-                    }
-                });
-                RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/uploadIcon");
-                params.setMultipart(true);
-                params.addBodyParameter("icon", photoPath);
-                params.addBodyParameter("token", Y.TOKEN);
-
-                Y.post(params, new Y.MyCommonCall<String>() {
-                    @Override
-                    public void onSuccess(String result) {
-                        if (Y.getRespCode(result)) {
-                            Y.USER.setIcon(Y.getData(result));
-                            Y.t("上传正常");
-                        } else {
-                            Y.t("上传异常");
-                        }
                     }
                 });
                 break;

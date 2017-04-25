@@ -101,6 +101,7 @@ public class AttendantCall extends Activity {
                                     Y.post(params, new Y.MyCommonCall<String>() {
                                         @Override
                                         public void onSuccess(String result) {
+                                            Y.l(result);
 
                                             if (Y.getRespCode(result)) {
                                                 Y.t("上传成功");

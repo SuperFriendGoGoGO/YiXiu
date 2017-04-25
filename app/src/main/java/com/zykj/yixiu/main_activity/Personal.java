@@ -97,7 +97,7 @@ public class Personal extends Activity {
         Intent intent = getIntent();
         didian = intent.getStringExtra("didian");
         chengshi = intent.getStringExtra("chengshi");
-        if (TextUtils.isEmpty(Y.USER.getIcon())){
+        if (!TextUtils.isEmpty(Y.USER.getIcon())){
             ImageOptions imageOptions=new ImageOptions.Builder()
                     .setCircular(true)
                     .build();

@@ -23,13 +23,6 @@ public class Y {
     public static boolean isLog = true;
     public static User USER;
     public static String TOKEN;
-    public static String SHENG;
-    public static String SHI;
-    public static String QU;
-    public static String ADDRESS;
-    public static String CITYCODE;
-    public static String LATITUDE;
-    public static String LONGITUDE;
 
 
     public static void t(String str) {//吐司

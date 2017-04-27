@@ -35,6 +35,7 @@ import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.utils.Address;
 import com.zykj.yixiu.utils.Y;
 
 import butterknife.Bind;
@@ -48,11 +49,11 @@ import static com.zykj.yixiu.R.id.textView;
  */
 
 public class MyMap extends Activity {
-    @Bind(R.id.et_dizhi)
+
     EditText etDizhi;
-    @Bind(R.id.bt_dizhi)
+
     Button btDizhi;
-    @Bind(R.id.bmapView)
+
     MapView mMapView;
     private LatLng latLng;
     private boolean isFirst = true;
@@ -61,6 +62,7 @@ public class MyMap extends Activity {
     private LocationClient mClient;
     private String addrStr;
     private String address;
+    private Address add;
 
 
     @Override
@@ -68,15 +70,14 @@ public class MyMap extends Activity {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_map);
-        ButterKnife.bind(this);
         mMapView = (MapView) findViewById(R.id.bmapView);
-       etDizhi = (EditText) findViewById(R.id.et_dizhi);
+        etDizhi = (EditText) findViewById(R.id.et_dizhi);
         btDizhi = (Button) findViewById(R.id.bt_dizhi);
         map = mMapView.getMap();
         initLocation();
         selectMap();
 
-       btDizhi.setOnClickListener(new View.OnClickListener() {
+        btDizhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String city_name = etDizhi.getText().toString();
@@ -103,6 +104,7 @@ public class MyMap extends Activity {
 
                             }
                         }
+
                         @Override
                         public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
                         }
@@ -110,9 +112,9 @@ public class MyMap extends Activity {
 
                 }
                 finish();
-                Intent intent=getIntent();
-                intent.putExtra("address",address);
-                MyMap.this.setResult(0,intent);
+                Intent intent = getIntent();
+                intent.putExtra("add", add);
+                MyMap.this.setResult(0, intent);
                 MyMap.this.finish();
             }
         });
@@ -150,9 +152,9 @@ public class MyMap extends Activity {
     // 地理编码
     public void jieMa(LatLng latLng) {
         double latitude = latLng.latitude;
-        Y.LATITUDE=latitude+"";
+        add.setLat(latitude);
         double longitude = latLng.longitude;
-        Y.LONGITUDE=longitude+"";
+        add.setLon(longitude);
         GeoCoder geoCoder = GeoCoder.newInstance();  // 创建地理编码对象
 
         //发起反地理
@@ -173,11 +175,11 @@ public class MyMap extends Activity {
                     ReverseGeoCodeResult.AddressComponent addressDetail = reverseGeoCodeResult.getAddressDetail();
                     Y.l(addressDetail.province);
                     address = reverseGeoCodeResult.getAddress();
-                    Y.ADDRESS= address;
+                    add.setAddress(address);
                     String city = addressDetail.city;
-                    Y.SHI=city;
+                    add.setCity_name(city);
                     String district = addressDetail.district;
-                    Y.QU=district;
+                    add.setRegion(district);
 
 
                 }
@@ -210,14 +212,12 @@ public class MyMap extends Activity {
                     return;
                 }
                 addrStr = bdLocation.getAddrStr();
-                addrStr = addrStr;
                 etDizhi.post(new Runnable() {
                     @Override
                     public void run() {
                         etDizhi.setText(addrStr);
                     }
                 });
-
 
 
                 //获取BDLocation数据转换成MyLocationData
@@ -239,10 +239,16 @@ public class MyMap extends Activity {
 
                     jieMa(latLng);
                     String cityCode = bdLocation.getCityCode();
-                    Y.CITYCODE=cityCode;
+                    add.setCity_code(cityCode);
                     map.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
 //                    MapStatusUpdate msu= MapStatusUpdateFactory.newLatLng(latLng);// 更新百度地图对象
 //                    map.animateMapStatus(msu);  //把更新的信息告诉百度
+                    address = bdLocation.getAddress().address;
+                    add.setAddress(address);
+                    String city = bdLocation.getAddress().city;
+                    add.setCity_name(city);
+                    String district = bdLocation.getAddress().district;
+                    add.setRegion(district);
                     isFirst = false;  //我已经不是第一次了
                 }
                 //在当前绘制一个标注

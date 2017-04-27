@@ -208,4 +208,8 @@
         android:background="@mipmap/u2556"
         android:layout_marginTop="20dp"
         android:id="@+id/button2" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_dizhi"></ListView>
 </LinearLayout>

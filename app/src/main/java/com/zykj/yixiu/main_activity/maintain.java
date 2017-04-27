@@ -277,7 +277,7 @@ public class Maintain extends Activity {
                     appliancetype.setText("请选择你的家电类型");
                     phonemodel.setText("请选择你的家电型号");
                     faultpoint.setText("请选择你的家电故障点");
-                    RequestParams params1 = new RequestParams("http://221.207.184.124:7071/yxg/findComputerCategory");
+                    RequestParams params1 = new RequestParams("http://221.207.184.124:7071/yxg/findApplianceCategory");
                     params1.addBodyParameter("pid", lists.get(index).getId() + "");
                     Y.post(params1, new Y.MyCommonCall<String>() {
                         @Override

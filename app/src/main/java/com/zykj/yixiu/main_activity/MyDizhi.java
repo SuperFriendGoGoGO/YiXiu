@@ -8,13 +8,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.adapter.LVAdapter;
+import com.zykj.yixiu.utils.Address;
+import com.zykj.yixiu.utils.DingDan;
 import com.zykj.yixiu.utils.Y;
 import com.zykj.yixiu.widget.MyTopBar;
 
 import org.xutils.http.RequestParams;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -55,6 +62,10 @@ public class MyDizhi extends Activity {
     Button button2;
     @Bind(R.id.mytopbar)
     MyTopBar mytopbar;
+    @Bind(R.id.lv_dizhi)
+    ListView lvDizhi;
+    private Address add;
+    private List <DingDan> list=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +79,19 @@ public class MyDizhi extends Activity {
         llXiangxidizhi.setVisibility(View.GONE);
         button.setVisibility(View.GONE);
         button2.setVisibility(View.GONE);
+        for (int i = 0; i <list.size() ; i++) {
+            DingDan dan=new DingDan();
+            dan.setName(etName.getText().toString());
+            dan.setNumber(etNumber.getText().toString());
+            dan.setDizhi(etDizhi.getText().toString());
+
+        }
+        LVAdapter adapter=new LVAdapter(this,list);
+        lvDizhi.setAdapter(adapter);
+
     }
 
-    @OnClick({R.id.ll_add, R.id.tv_num, R.id.button, R.id.button2, R.id.iv_fanhui,R.id.ll_xiangxidizhi})
+    @OnClick({R.id.ll_add, R.id.tv_num, R.id.button, R.id.button2, R.id.iv_fanhui, R.id.ll_xiangxidizhi})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_add:
@@ -98,12 +119,12 @@ public class MyDizhi extends Activity {
                 params.addBodyParameter("address", etDizhi.getText().toString());
                 params.addBodyParameter("phone", tvNum.getText().toString());
                 params.addBodyParameter("user_id", Y.USER.getUser_id() + "");
-                params.addBodyParameter("region", Y.QU);
-                params.addBodyParameter("lat",Y.LATITUDE);
-                params.addBodyParameter("lon", Y.LONGITUDE);
-                params.addBodyParameter("city_name", Y.SHI);
-                params.addBodyParameter("city_code", Y.CITYCODE);
-                params.addBodyParameter("isdefault", 0 + "");
+                params.addBodyParameter("region", add.getRegion());
+                params.addBodyParameter("lat", add.getLat() + "");
+                params.addBodyParameter("lon", add.getLon() + "");
+                params.addBodyParameter("city_name", add.getCity_name());
+                params.addBodyParameter("city_code", add.getCity_code());
+                params.addBodyParameter("isdefault", 1 + "");
 
                 Y.post(params, new Y.MyCommonCall<String>() {
                     @Override
@@ -133,11 +154,21 @@ public class MyDizhi extends Activity {
                 Intent intent = new Intent(this, Personal.class);
                 startActivity(intent);
                 break;
-            case  R.id.ll_xiangxidizhi :
+            case R.id.ll_xiangxidizhi:
                 Intent intent2 = new Intent(this, MyMap.class);
-               startActivityForResult(intent2,0);
-                intent2.getStringExtra("address");
-            break;
+                startActivityForResult(intent2, 0);
+                etDizhi.setText(intent2.getStringExtra("address"));
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0 && data != null) {
+            Bundle bundle = data.getExtras();
+            add = (Address) bundle.get("add");
+            etDizhi.setText(add.getCity_name() + add.getRegion());
         }
     }
 }

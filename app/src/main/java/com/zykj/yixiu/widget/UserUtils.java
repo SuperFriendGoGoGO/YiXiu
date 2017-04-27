@@ -123,5 +123,15 @@ public class UserUtils {
     }
 
     public static String ADDRESS_ID;
+//    name: 姓名
+//    address: 地址
+//    phone: 电话号码
+//    user_id:用户ID
+//    region:区
+//    lat:纬度
+//    lon:经度
+//    city_name:城市名
+//    city_code:城市编码
+//    isdefault: 是否是默认 0 不默认  1 默认
 
 }

@@ -70,7 +70,7 @@ public class MyDizhi extends Activity {
         button2.setVisibility(View.GONE);
     }
 
-    @OnClick({R.id.ll_add, R.id.tv_num, R.id.button, R.id.button2, R.id.iv_fanhui})
+    @OnClick({R.id.ll_add, R.id.tv_num, R.id.button, R.id.button2, R.id.iv_fanhui,R.id.ll_xiangxidizhi})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_add:
@@ -86,7 +86,7 @@ public class MyDizhi extends Activity {
                 mytopbar.setTitleText("编辑地址");
                 llAdd.setVisibility(View.GONE);
                 llName.setVisibility(View.GONE);
-                llPhone.setVisibility(View.VISIBLE);
+                llPhone.setVisibility(View.GONE);
                 llXiangxidizhi.setVisibility(View.GONE);
                 button.setVisibility(View.GONE);
                 llNum.setVisibility(View.VISIBLE);
@@ -99,10 +99,10 @@ public class MyDizhi extends Activity {
                 params.addBodyParameter("phone", tvNum.getText().toString());
                 params.addBodyParameter("user_id", Y.USER.getUser_id() + "");
                 params.addBodyParameter("region", Y.QU);
-                params.addBodyParameter("lat", "");
-                params.addBodyParameter("lon", "");
-                params.addBodyParameter("city_name", "");
-                params.addBodyParameter("city_code", "");
+                params.addBodyParameter("lat",Y.LATITUDE);
+                params.addBodyParameter("lon", Y.LONGITUDE);
+                params.addBodyParameter("city_name", Y.SHI);
+                params.addBodyParameter("city_code", Y.CITYCODE);
                 params.addBodyParameter("isdefault", 0 + "");
 
                 Y.post(params, new Y.MyCommonCall<String>() {
@@ -133,6 +133,11 @@ public class MyDizhi extends Activity {
                 Intent intent = new Intent(this, Personal.class);
                 startActivity(intent);
                 break;
+            case  R.id.ll_xiangxidizhi :
+                Intent intent2 = new Intent(this, MyMap.class);
+               startActivityForResult(intent2,0);
+                intent2.getStringExtra("address");
+            break;
         }
     }
 }

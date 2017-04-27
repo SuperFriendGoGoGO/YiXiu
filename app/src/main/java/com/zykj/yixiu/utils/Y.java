@@ -26,6 +26,10 @@ public class Y {
     public static String SHENG;
     public static String SHI;
     public static String QU;
+    public static String ADDRESS;
+    public static String CITYCODE;
+    public static String LATITUDE;
+    public static String LONGITUDE;
 
 
     public static void t(String str) {//吐司

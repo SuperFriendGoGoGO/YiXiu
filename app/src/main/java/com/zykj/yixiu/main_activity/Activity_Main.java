@@ -104,9 +104,6 @@ public class Activity_Main extends Activity {
                     public void selectListener(String province, String city, String district) {
                         tvDidian.setText(city);
                         sheng = province;
-                        Y.SHENG = province;
-                        Y.SHI = city;
-                        Y.QU = district;
                     }
                 });
             }

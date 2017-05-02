@@ -60,6 +60,8 @@ public class AttendantCall extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendantcall);
         ButterKnife.bind(this);
+        Intent intent=getIntent();
+       utils= (UserUtils) intent.getSerializableExtra("utils");
 
 
     }
@@ -85,19 +87,19 @@ public class AttendantCall extends Activity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     //上传订单
                                     RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/addOrder");
-                                    params.addBodyParameter("order_type", UserUtils.ORDER_TYPE);
-                                    params.addBodyParameter("brand", UserUtils.BRAND);
-                                    params.addBodyParameter("model", UserUtils.MODEL);
-                                    params.addBodyParameter("fault", UserUtils.FAULT);
-                                    params.addBodyParameter("fault_desc", UserUtils.FAULT_DESC);
-                                    params.addBodyParameter("category", UserUtils.CATEGORY);
-                                    params.addBodyParameter("image1", UserUtils.IMAGE1);
-                                    params.addBodyParameter("service_time", UserUtils.SERVICE_TIME);
-                                    params.addBodyParameter("service_address", UserUtils.SERVICE_ADDRESS);
-                                    params.addBodyParameter("custom_phone", UserUtils.CUSTOM_PHONE);
-                                    params.addBodyParameter("custom_name", Y.USER.getAli_name());
-                                    params.addBodyParameter("custom_id", UserUtils.CUSTOM_ID);
-                                    params.addBodyParameter("address_id", UserUtils.ADDRESS_ID);
+//                                    params.addBodyParameter("order_type", UserUtils.ORDER_TYPE);
+//                                    params.addBodyParameter("brand", UserUtils.BRAND);
+//                                    params.addBodyParameter("model", UserUtils.MODEL);
+//                                    params.addBodyParameter("fault", UserUtils.FAULT);
+//                                    params.addBodyParameter("fault_desc", UserUtils.FAULT_DESC);
+//                                    params.addBodyParameter("category", UserUtils.CATEGORY);
+//                                    params.addBodyParameter("image1", UserUtils.IMAGE1);
+//                                    params.addBodyParameter("service_time", UserUtils.SERVICE_TIME);
+//                                    params.addBodyParameter("service_address", UserUtils.SERVICE_ADDRESS);
+//                                    params.addBodyParameter("custom_phone", UserUtils.CUSTOM_PHONE);
+//                                    params.addBodyParameter("custom_name", Y.USER.getAli_name());
+//                                    params.addBodyParameter("custom_id", UserUtils.CUSTOM_ID);
+//                                    params.addBodyParameter("address_id", UserUtils.ADDRESS_ID);
                                     Y.post(params, new Y.MyCommonCall<String>() {
                                         @Override
                                         public void onSuccess(String result) {
@@ -125,7 +127,7 @@ public class AttendantCall extends Activity {
                     @Override
                     public void onTimeSelect(Date date, View v) {//选中事件回调
                         tvServicetime.setText(getTime(date));
-
+                        utils.setService_time(tvServicetime.getText().toString());
                     }
                 })
                         .build();
@@ -133,8 +135,9 @@ public class AttendantCall extends Activity {
                 pvTime.show();
                 break;
             case R.id.ll_address:
-                //跳转到map地图
+                //跳转到dizhi
                 Intent intent = new Intent(this, MyDizhi.class);
+                intent.putExtra("utils",utils);
                 startActivity(intent);
                 break;
             case R.id.iv_fanhui:

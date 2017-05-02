@@ -66,6 +66,7 @@ public class MyDizhi extends Activity {
     ListView lvDizhi;
     private Address add;
     private List <Address> list=new ArrayList<>();
+    private UserUtils utils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,8 @@ public class MyDizhi extends Activity {
         }
         LVAdapter adapter=new LVAdapter(this,list);
         lvDizhi.setAdapter(adapter);
+        Intent intent=getIntent();
+        utils = (UserUtils) intent.getSerializableExtra("utils");
 
     }
 
@@ -114,6 +117,8 @@ public class MyDizhi extends Activity {
                 break;
             case R.id.button:
                 //上传  添加地址
+                utils.setCustom_name(etName.getText().toString());
+                utils.setCustom_phone(etNumber.getText().toString());
                 RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/addaddress");
                 params.addBodyParameter("name", etName.getText().toString());
                 params.addBodyParameter("address", etDizhi.getText().toString());
@@ -167,6 +172,7 @@ public class MyDizhi extends Activity {
             Bundle bundle = data.getExtras();
             add = (Address) bundle.get("add");
             etDizhi.setText(add.getCity_name() + add.getRegion());
+            utils.setService_address(add.getCity_name() + add.getRegion());
         }
     }
 }

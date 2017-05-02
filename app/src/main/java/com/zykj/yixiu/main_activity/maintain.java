@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSON;
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.MobileBean;
+import com.zykj.yixiu.utils.UserUtils;
 import com.zykj.yixiu.utils.Y;
 import com.zykj.yixiu.widget.MyTopBar;
 
@@ -74,6 +75,7 @@ public class Maintain extends Activity {
     private List<MobileBean> lists;
     private int pid = -1;
     private int cacc = -1;
+    private UserUtils utils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,7 @@ public class Maintain extends Activity {
         Intent intent = getIntent();
         //获取首页传来的标示符
         mark = intent.getStringExtra("mark");
+        utils = (UserUtils) intent.getSerializableExtra("utils");
         //判断标示符是通过那个按键传来的
         if ("1".equals(mark)) {
             llType.setVisibility(View.GONE);
@@ -99,7 +102,7 @@ public class Maintain extends Activity {
             phonemodel.setTextColor(Color.parseColor("#00cccc"));
             faultpoint.setText("主板");
             faultpoint.setTextColor(Color.parseColor("#00cccc"));
-            describe.setText("开机进不去系统，黑屏白字");
+            describe.setHint("开机进不去系统，黑屏白字");
         } else if ("3".equals(mark)) {
             //改变文字
             headline.setTitleText("家电维修");
@@ -108,14 +111,14 @@ public class Maintain extends Activity {
             appliancetype.setText("请选择你的家电类型");
             phonemodel.setText("请选择你的家电型号");
             faultpoint.setText("请选择你的家电故障点");
-            describe.setText("请对你的家电故障进行简单的描述");
+            describe.setHint("请对你的家电故障进行简单的描述");
         }
 
 
     }
 
 
-    @OnClick({R.id.ll_brand, R.id.ll_type, R.id.ll_model, R.id.ll_malfunction, R.id.picture, R.id.transfer,R.id.iv_fanhui})
+    @OnClick({R.id.ll_brand, R.id.ll_type, R.id.ll_model, R.id.ll_malfunction, R.id.picture, R.id.transfer, R.id.iv_fanhui})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_brand:
@@ -135,6 +138,8 @@ public class Maintain extends Activity {
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         pid = lists.get(options1).getId();
                                         MobileBrand.setText(lists.get(options1).getName().toString());
+                                        utils.setBrand(lists.get(options1).getName().toString());
+
 
                                     }
                                 }).build();
@@ -171,6 +176,7 @@ public class Maintain extends Activity {
 
                                         MobileBrand.setText(lists.get(options1).getName().toString());
                                         pid = lists.get(options1).getId();
+                                        utils.setBrand(lists.get(options1).getName().toString());
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -205,6 +211,7 @@ public class Maintain extends Activity {
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         MobileBrand.setText(lists.get(options1).getName().toString());
                                         pid = lists.get(options1).getId();
+                                        utils.setBrand(lists.get(options1).getName().toString());
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -250,6 +257,7 @@ public class Maintain extends Activity {
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         appliancetype.setText(lists.get(options1).getName().toString());
                                         cacc = lists.get(options1).getId();
+                                        utils.setCategory(lists.get(options1).getName().toString());
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -285,6 +293,7 @@ public class Maintain extends Activity {
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         appliancetype.setText(lists.get(options1).getName().toString());
                                         cacc = lists.get(options1).getId();
+                                        utils.setCategory(lists.get(options1).getName().toString());
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -327,6 +336,7 @@ public class Maintain extends Activity {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         phonemodel.setText(lists.get(options1).getName().toString());
+                                        utils.setModel(lists.get(options1).getName().toString());
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -369,6 +379,7 @@ public class Maintain extends Activity {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         phonemodel.setText(lists.get(options1).getName().toString());
+                                        utils.setModel(lists.get(options1).getName().toString());
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -411,6 +422,7 @@ public class Maintain extends Activity {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         phonemodel.setText(lists.get(i).getName().toString());
+                                        utils.setModel(lists.get(options1).getName().toString());
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -441,7 +453,8 @@ public class Maintain extends Activity {
                             OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                 @Override
                                 public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                    faultpoint.setText(lists.get(index).getName().toString());
+                                    faultpoint.setText(lists.get(options1).getName().toString());
+                                    utils.setFault(lists.get(options1).getName().toString());
                                 }
                             }).build();
                             List<String> list = new ArrayList();
@@ -470,6 +483,7 @@ public class Maintain extends Activity {
                         if (reqeustCode == 101) {
                             PhotoInfo info = resultList.get(0);
                             String photoPath = info.getPhotoPath();
+                            utils.setImage1(photoPath);
                             x.image().bind(picture, new File(photoPath).toURI().toString());
                         }
 
@@ -484,11 +498,12 @@ public class Maintain extends Activity {
             case R.id.transfer:
                 if (!MobileBrand.getText().toString().isEmpty() && !appliancetype.getText().toString().isEmpty() && !phonemodel.getText().toString().isEmpty() && !faultpoint.getText().toString().isEmpty() && !describe.getText().toString().isEmpty()) {
                     Intent intent = new Intent(this, AttendantCall.class);
+                    intent.putExtra("utils",utils);
                     startActivity(intent);
                 }
                 break;
             case R.id.iv_fanhui:
-                Intent intent=new Intent(this,Activity_Main.class);
+                Intent intent = new Intent(this, Activity_Main.class);
                 startActivity(intent);
                 break;
         }

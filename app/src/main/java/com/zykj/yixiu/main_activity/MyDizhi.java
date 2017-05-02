@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.adapter.LVAdapter;
 import com.zykj.yixiu.utils.Address;
-import com.zykj.yixiu.utils.DingDan;
 import com.zykj.yixiu.utils.Y;
 import com.zykj.yixiu.widget.MyTopBar;
 
@@ -65,7 +64,7 @@ public class MyDizhi extends Activity {
     @Bind(R.id.lv_dizhi)
     ListView lvDizhi;
     private Address add;
-    private List <DingDan> list=new ArrayList<>();
+    private List <Address> list=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,10 +79,10 @@ public class MyDizhi extends Activity {
         button.setVisibility(View.GONE);
         button2.setVisibility(View.GONE);
         for (int i = 0; i <list.size() ; i++) {
-            DingDan dan=new DingDan();
-            dan.setName(etName.getText().toString());
-            dan.setNumber(etNumber.getText().toString());
-            dan.setDizhi(etDizhi.getText().toString());
+           Address address=new Address();
+            address.setName(etName.getText().toString());
+            address.setAddress(etDizhi.getText().toString());
+            address.setPhone(tvNum.getText().toString());
 
         }
         LVAdapter adapter=new LVAdapter(this,list);

@@ -5,10 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zykj.yixiu.R;
-import com.zykj.yixiu.utils.DingDan;
+import com.zykj.yixiu.utils.Address;
+import com.zykj.yixiu.utils.Y;
+
+import org.xutils.http.RequestParams;
 
 import java.util.List;
 
@@ -18,9 +22,9 @@ import java.util.List;
 
 public class LVAdapter extends BaseAdapter {
     Context context;
-    List<DingDan> list;
+    List<Address> list;
 
-    public LVAdapter(Context context, List<DingDan> list) {
+    public LVAdapter(Context context, List<Address> list) {
         this.context = context;
         this.list = list;
     }
@@ -41,7 +45,7 @@ public class LVAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         MyHolder myHolder = null;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.activity_administration, null);
@@ -56,14 +60,73 @@ public class LVAdapter extends BaseAdapter {
             myHolder.bt_shanchu = (Button) convertView.findViewById(R.id.bt_shanchu);
 
         }
-        myHolder.tv_name.setText(list.get(position).getName());
-        myHolder.tv_number.setText(list.get(position).getNumber());
-        myHolder.tv_dizhi.setText(list.get(position).getDizhi());
+        //设置数据
+       final Address a=list.get(position);
+        myHolder.tv_name.setText(a.getName());
+        myHolder.tv_number.setText(a.getPhone());
+        myHolder.tv_dizhi.setText(a.getAddress());
+        //选择默认事件
+        myHolder.iv_moren.setTag(a.getAddress_id());//把ID 捆绑到itemAddressBtShanchu 控件上
+        myHolder.iv_moren.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/defAddress");
+                params.addBodyParameter("user_id",a.getUser_id()+"");
+                params.addBodyParameter("address_id",a.getAddress_id()+"");
+                Y.post(params, new Y.MyCommonCall<String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        if(Y.getRespCode(result)) {
+                            for (int i = 0; i < list.size(); i++) {
+                                if (i == position) {  //需要勾选的位置
+                                    list.get(i).setIsdefault(1);
+                                } else {  //取消勾选
+                                    list.get(i).setIsdefault(0);
+                                }
+                            }
+                            notifyDataSetChanged();//刷新列表
+                        }
+                    }
+                });
+
+
+
+
+            }
+        });
+
+
+
+        //删除
+        myHolder.bt_shanchu.setTag(a.getAddress_id());//把ID 捆绑到itemAddressBtShanchu 控件上
+        myHolder.bt_shanchu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/defAddress");
+                params.addBodyParameter("user_id",a.getUser_id()+"");
+                params.addBodyParameter("address_id",a.getAddress_id()+"");
+            Y.post(params, new Y.MyCommonCall<String>() {
+                @Override
+                public void onSuccess(String result) {
+                    if(Y.getRespCode(result)){
+                        Y.t("删除成功");
+                        list.remove(position);// 删除数据源得到数据
+                        notifyDataSetChanged();  //刷新列表
+                    }
+                }
+            });
+
+
+            }
+        });
+
         return convertView;
     }
+
 }
 
 class MyHolder {
     TextView tv_name, tv_number, tv_dizhi;
     Button bt_bianji, bt_shanchu;
+    ImageView iv_moren;
 }

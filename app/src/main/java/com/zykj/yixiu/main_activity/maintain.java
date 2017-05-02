@@ -110,7 +110,7 @@ public class Maintain extends Activity {
             faultpoint.setText("请选择你的家电故障点");
             describe.setText("请对你的家电故障进行简单的描述");
         }
-        UserUtils.FAULT_DESC=describe.getText().toString();
+
 
     }
 
@@ -135,7 +135,7 @@ public class Maintain extends Activity {
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         pid = lists.get(options1).getId();
                                         MobileBrand.setText(lists.get(options1).getName().toString());
-                                        UserUtils.BRAND=lists.get(options1).getName().toString();
+
                                     }
                                 }).build();
                                 List<String> list = new ArrayList();
@@ -170,7 +170,6 @@ public class Maintain extends Activity {
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
 
                                         MobileBrand.setText(lists.get(options1).getName().toString());
-                                        UserUtils.BRAND=lists.get(options1).getName().toString();
                                         pid = lists.get(options1).getId();
                                     }
                                 }).build();
@@ -204,7 +203,6 @@ public class Maintain extends Activity {
                                 OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                        UserUtils.BRAND=lists.get(options1).getName().toString();
                                         MobileBrand.setText(lists.get(options1).getName().toString());
                                         pid = lists.get(options1).getId();
                                     }
@@ -250,7 +248,6 @@ public class Maintain extends Activity {
                                 OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                    UserUtils.CATEGORY=lists.get(options1).getName().toString();
                                         appliancetype.setText(lists.get(options1).getName().toString());
                                         cacc = lists.get(options1).getId();
                                     }
@@ -286,7 +283,6 @@ public class Maintain extends Activity {
                                 OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                        UserUtils.CATEGORY=lists.get(options1).getName().toString();
                                         appliancetype.setText(lists.get(options1).getName().toString());
                                         cacc = lists.get(options1).getId();
                                     }
@@ -330,7 +326,6 @@ public class Maintain extends Activity {
                                 OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                        UserUtils.MODEL=lists.get(options1).getName().toString();
                                         phonemodel.setText(lists.get(options1).getName().toString());
                                     }
                                 }).build();
@@ -373,7 +368,6 @@ public class Maintain extends Activity {
                                 OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                        UserUtils.MODEL=lists.get(options1).getName().toString();
                                         phonemodel.setText(lists.get(options1).getName().toString());
                                     }
                                 }).build();
@@ -416,7 +410,6 @@ public class Maintain extends Activity {
                                 OptionsPickerView opv = new OptionsPickerView.Builder(Maintain.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                        UserUtils.MODEL=lists.get(options1).getName().toString();
                                         phonemodel.setText(lists.get(i).getName().toString());
                                     }
                                 }).build();
@@ -449,7 +442,6 @@ public class Maintain extends Activity {
                                 @Override
                                 public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                     faultpoint.setText(lists.get(index).getName().toString());
-                                    UserUtils.FAULT=lists.get(index).getName().toString();
                                 }
                             }).build();
                             List<String> list = new ArrayList();
@@ -479,7 +471,6 @@ public class Maintain extends Activity {
                             PhotoInfo info = resultList.get(0);
                             String photoPath = info.getPhotoPath();
                             x.image().bind(picture, new File(photoPath).toURI().toString());
-                            UserUtils.IMAGE1=photoPath;
                         }
 
                     }

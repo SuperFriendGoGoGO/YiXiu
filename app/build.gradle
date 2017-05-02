@@ -62,5 +62,5 @@ dependencies {
     compile 'com.github.glassLake:DialogUtils:1.0.2'
     compile 'cn.finalteam:galleryfinal:1.4.6'
     compile 'com.android.support:support-v4:23.1.1'
-    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+
 }

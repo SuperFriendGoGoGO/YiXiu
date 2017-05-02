@@ -56,8 +56,6 @@ public class MyZiLiao extends Activity {
         Intent intent=getIntent();
         didian = intent.getStringExtra("didian");
         chengshi = intent.getStringExtra("chengshi");
-       UserUtils.CUSTOM_NAME=Y.USER.getUsername();
-        UserUtils.CUSTOM_PHONE=Y.USER.getPhone();
                Y.USER.setUsername(etName.getText().toString());
         Y.USER.setPhone(etNum.getText().toString());
         Y.USER.setSex(sex);

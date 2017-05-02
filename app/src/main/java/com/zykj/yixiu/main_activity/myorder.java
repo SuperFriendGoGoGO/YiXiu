@@ -8,12 +8,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zykj.yixiu.R;
-import com.zykj.yixiu.adapter.RvAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -40,22 +38,6 @@ public class MyOrder extends Activity {
     ImageView ivYi;
     @Bind(R.id.iv_quxiqao)
     ImageView ivQuxiqao;
-    @Bind(R.id.tv_jiedan)
-    TextView tvJiedan;
-    @Bind(R.id.textView5)
-    TextView textView5;
-    @Bind(R.id.bt_chakan1)
-    Button btChakan1;
-    @Bind(R.id.bt_quxiao1)
-    Button btQuxiao1;
-    @Bind(R.id.tv_time)
-    TextView tvTime;
-    @Bind(R.id.bt_chongfa)
-    Button btChongfa;
-    @Bind(R.id.bt_chakan2)
-    Button btChakan2;
-    @Bind(R.id.bt_quxiao2)
-    Button btQuxiao2;
     @Bind(R.id.rv_xiadan)
     RecyclerView rvXiadan;
 
@@ -73,9 +55,7 @@ public class MyOrder extends Activity {
             ivQuxiqao.setImageResource(R.mipmap.u30_line);
             tvYi.setTextColor(Color.parseColor("#6b6b6b"));
             ivYi.setImageResource(R.mipmap.u30_line);
-            tvJiedan.setVisibility(View.VISIBLE);
-            tvTime.setVisibility(View.VISIBLE);
-            btChongfa.setVisibility(View.VISIBLE);
+
 
         } else if (wow.equals("2")) {
             tvYi.setTextColor(Color.parseColor("#00cccc"));
@@ -84,9 +64,7 @@ public class MyOrder extends Activity {
             ivQuxiqao.setImageResource(R.mipmap.u30_line);
             tvWei.setTextColor(Color.parseColor("#6b6b6b"));
             ivWei.setImageResource(R.mipmap.u30_line);
-            tvJiedan.setVisibility(View.GONE);
-            tvTime.setVisibility(View.GONE);
-            btChongfa.setVisibility(View.GONE);
+
         } else if (wow.equals("3")) {
             tvQuxiao.setTextColor(Color.parseColor("#00cccc"));
             ivQuxiqao.setImageResource(R.mipmap.u15_line);
@@ -94,17 +72,14 @@ public class MyOrder extends Activity {
             ivYi.setImageResource(R.mipmap.u30_line);
             tvWei.setTextColor(Color.parseColor("#6b6b6b"));
             ivWei.setImageResource(R.mipmap.u30_line);
-            tvJiedan.setVisibility(View.GONE);
-            tvTime.setVisibility(View.GONE);
-            btChongfa.setVisibility(View.GONE);
         }
         rvXiadan.setLayoutManager(new LinearLayoutManager(this));
         rvXiadan.setItemAnimator(new DefaultItemAnimator());
-      //  RvAdapter adapter=new RvAdapter();
+        //  RvAdapter adapter=new RvAdapter();
 
     }
 
-    @OnClick({R.id.iv_fanhui, R.id.iv_hard, R.id.tv_wei, R.id.tv_yi, R.id.tv_quxiao, R.id.bt_chakan1, R.id.bt_quxiao1, R.id.bt_chakan2, R.id.bt_quxiao2})
+    @OnClick({R.id.iv_fanhui, R.id.iv_hard, R.id.tv_wei, R.id.tv_yi, R.id.tv_quxiao})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_wei:
@@ -114,9 +89,7 @@ public class MyOrder extends Activity {
                 ivQuxiqao.setImageResource(R.mipmap.u30_line);
                 tvYi.setTextColor(Color.parseColor("#6b6b6b"));
                 ivYi.setImageResource(R.mipmap.u30_line);
-                tvJiedan.setVisibility(View.VISIBLE);
-                tvTime.setVisibility(View.VISIBLE);
-                btChongfa.setVisibility(View.VISIBLE);
+
                 break;
             case R.id.tv_yi:
                 tvYi.setTextColor(Color.parseColor("#00cccc"));
@@ -125,9 +98,7 @@ public class MyOrder extends Activity {
                 ivQuxiqao.setImageResource(R.mipmap.u30_line);
                 tvWei.setTextColor(Color.parseColor("#6b6b6b"));
                 ivWei.setImageResource(R.mipmap.u30_line);
-                tvJiedan.setVisibility(View.GONE);
-                tvTime.setVisibility(View.GONE);
-                btChongfa.setVisibility(View.GONE);
+
                 break;
             case R.id.tv_quxiao:
                 tvQuxiao.setTextColor(Color.parseColor("#00cccc"));
@@ -136,26 +107,10 @@ public class MyOrder extends Activity {
                 ivYi.setImageResource(R.mipmap.u30_line);
                 tvWei.setTextColor(Color.parseColor("#6b6b6b"));
                 ivWei.setImageResource(R.mipmap.u30_line);
-                tvJiedan.setVisibility(View.GONE);
-                tvTime.setVisibility(View.GONE);
-                btChongfa.setVisibility(View.GONE);
-                break;
-            case R.id.bt_chakan1:
-                if (tvWei.getTextColors().equals(Color.parseColor("#00cccc")))
-                    break;
-            case R.id.bt_quxiao1:
-                break;
-            case R.id.bt_chakan2:
-                break;
-            case R.id.bt_quxiao2:
-                break;
-            case R.id.iv_hard:
 
                 break;
-            case R.id.iv_fanhui:
-                Intent intent = new Intent(this, Personal.class);
-                startActivity(intent);
-                break;
+
+
         }
     }
 }

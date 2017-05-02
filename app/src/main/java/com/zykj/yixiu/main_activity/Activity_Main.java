@@ -106,18 +106,16 @@ public class Activity_Main extends Activity {
         switch (view.getId()) {
             case R.id.mobile:
                 Intent mobileintent = new Intent(this, Maintain.class);
-                UserUtils.ORDER_TYPE = "手机";
                 mobileintent.putExtra("mark", "1");
                 startActivity(mobileintent);
                 break;
             case R.id.computer:
-                UserUtils.ORDER_TYPE = "电脑";
+
                 Intent computerintent = new Intent(this, Maintain.class);
                 computerintent.putExtra("mark", "2");
                 startActivity(computerintent);
                 break;
             case R.id.appliances:
-                UserUtils.ORDER_TYPE = "家电";
                 Intent appliancesintent = new Intent(this, Maintain.class);
                 appliancesintent.putExtra("mark", "3");
                 startActivity(appliancesintent);

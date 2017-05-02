@@ -14,6 +14,7 @@ import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.OptionsPicke;
+import com.zykj.yixiu.utils.UserUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +63,8 @@ public class Activity_Main extends Activity {
     @Bind(R.id.appliances)
     ImageView appliances;
     private String sheng;
+    private UserUtils utils;
+    private Intent intent = new Intent(this, Maintain.class);;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,7 @@ public class Activity_Main extends Activity {
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
         List images = new ArrayList();
+        intent.putExtra("utils",utils);
         for (int i = 0; i < 100; i++) {
             images.add(R.mipmap.u40);
         }
@@ -105,26 +109,25 @@ public class Activity_Main extends Activity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mobile:
-                Intent mobileintent = new Intent(this, Maintain.class);
-                mobileintent.putExtra("mark", "1");
-                startActivity(mobileintent);
+                utils.setOrder_type("1手机");
+                intent.putExtra("mark", "1");
+
+                startActivity(intent);
                 break;
             case R.id.computer:
-
-                Intent computerintent = new Intent(this, Maintain.class);
-                computerintent.putExtra("mark", "2");
-                startActivity(computerintent);
+                utils.setOrder_type("2电脑");
+                intent.putExtra("mark", "2");
+                startActivity(intent);
                 break;
             case R.id.appliances:
-                Intent appliancesintent = new Intent(this, Maintain.class);
-                appliancesintent.putExtra("mark", "3");
-                startActivity(appliancesintent);
+                utils.setOrder_type("3家电");
+                intent.putExtra("mark", "3");
+                startActivity(intent);
                 break;
             case R.id.iv_gereb:
-                Intent gerebintent = new Intent(this, Personal.class);
-                gerebintent.putExtra("didian", sheng);
-                gerebintent.putExtra("chengshi", tvDidian.getText().toString());
-                startActivity(gerebintent);
+                intent.putExtra("didian", sheng);
+                intent.putExtra("chengshi", tvDidian.getText().toString());
+                startActivity(intent);
                 break;
         }
     }

@@ -83,7 +83,6 @@ public class MyDizhi extends Activity {
             address.setName(etName.getText().toString());
             address.setAddress(etDizhi.getText().toString());
             address.setPhone(tvNum.getText().toString());
-
         }
         LVAdapter adapter=new LVAdapter(this,list);
         lvDizhi.setAdapter(adapter);

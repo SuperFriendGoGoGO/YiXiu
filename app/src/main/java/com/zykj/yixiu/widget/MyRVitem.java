@@ -8,8 +8,8 @@ import android.widget.TextView;
  */
 
 public class MyRVitem {
-    TextView tv_zhonglei,tv_dizhi,tv_shijian;
-    Button bt_xingqing,bt_shanchu;
+    TextView tv_zhonglei,tv_dizhi,tv_shijian,tv_time;
+    Button bt_xingqing,bt_shanchu,bt_chongfa;
 
     @Override
     public String toString() {
@@ -17,8 +17,10 @@ public class MyRVitem {
                 "tv_zhonglei=" + tv_zhonglei +
                 ", tv_dizhi=" + tv_dizhi +
                 ", tv_shijian=" + tv_shijian +
+                ", tv_time=" + tv_time +
                 ", bt_xingqing=" + bt_xingqing +
                 ", bt_shanchu=" + bt_shanchu +
+                ", bt_chongfa=" + bt_chongfa +
                 '}';
     }
 
@@ -46,6 +48,14 @@ public class MyRVitem {
         this.tv_shijian = tv_shijian;
     }
 
+    public TextView getTv_time() {
+        return tv_time;
+    }
+
+    public void setTv_time(TextView tv_time) {
+        this.tv_time = tv_time;
+    }
+
     public Button getBt_xingqing() {
         return bt_xingqing;
     }
@@ -60,5 +70,13 @@ public class MyRVitem {
 
     public void setBt_shanchu(Button bt_shanchu) {
         this.bt_shanchu = bt_shanchu;
+    }
+
+    public Button getBt_chongfa() {
+        return bt_chongfa;
+    }
+
+    public void setBt_chongfa(Button bt_chongfa) {
+        this.bt_chongfa = bt_chongfa;
     }
 }

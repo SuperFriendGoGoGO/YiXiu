@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:text="电脑"
-                android:id="@+id/zhonglei"
+                android:id="@+id/tv_zhonglei"
                 android:textSize="18dp"
                 android:layout_marginLeft="10dp"
                 android:textColor="#949494"/>
@@ -143,7 +143,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="查看详情"
-                android:id="@+id/bt_chakan2"
+                android:id="@+id/bt_chakan"
                 android:layout_marginLeft="10dp"
                 android:textColor="#6a6a6a"
                 android:background="@mipmap/u797"/>

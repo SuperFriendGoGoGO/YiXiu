@@ -28,13 +28,46 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.Myholder> {
     }
 
     @Override
-    public void onBindViewHolder(Myholder holder, int position) {
+    public void onBindViewHolder(Myholder holder, final int position) {
         holder.tv_zhonglei.setText(list.get(position).getTv_zhonglei());
         holder.tv_address.setText(list.get(position).getTv_dizhi());
         holder.tv_time.setText(list.get(position).getTv_time());
         holder.tv_time2.setText(list.get(position).getTv_shijian());
+        holder.bt_xiangqing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                xiangqing.Click(v);
+            }
+        });
+        holder.bt_chongfa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               chongfa.Click(v);
+            }
+        });
+        holder.bt_shanchu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.remove(position);
+            }
+        });
 
+    }
+public interface bt_xiangqingOnClickListener{
+    void Click(View v);
+}
+    private bt_xiangqingOnClickListener xiangqing;
 
+    public void setbt_xiangqingOnClickListener(RvAdapter.bt_xiangqingOnClickListener xiangqing) {
+        this.xiangqing = xiangqing;
+    }
+    public interface bt_chongfaOnClickListener{
+        void Click(View v);
+    }
+    private bt_chongfaOnClickListener chongfa;
+
+    public void setbt_chongfaOnClickListener(RvAdapter.bt_chongfaOnClickListener chongfa) {
+        this.chongfa = chongfa;
     }
 
     @Override

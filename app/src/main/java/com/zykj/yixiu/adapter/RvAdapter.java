@@ -22,7 +22,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.Myholder> {
   private List <MyRVitem>list;
     @Override
     public Myholder onCreateViewHolder(ViewGroup parent, int viewType) {
-      View view= View.inflate(context, R.layout.tool_rsview,null);
+      View view= View.inflate(context, R.layout.tool_rvview,null);
         Myholder myholder=new Myholder(view);
         return myholder;
     }

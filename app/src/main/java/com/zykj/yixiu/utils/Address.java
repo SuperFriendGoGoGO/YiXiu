@@ -3,6 +3,7 @@ package com.zykj.yixiu.utils;
 import java.io.Serializable;
 
 /**
+ * 查询地址  返回数据
  * Created by zykj on 2017/4/27.
  */
 

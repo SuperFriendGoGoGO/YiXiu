@@ -15,8 +15,8 @@ import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.utils.UserUtils;
 import com.zykj.yixiu.utils.Y;
-import com.zykj.yixiu.widget.UserUtils;
 
 import org.xutils.http.RequestParams;
 
@@ -53,14 +53,14 @@ public class AttendantCall extends Activity {
     Button btService;
     @Bind(R.id.iv_fanhui)
     ImageView ivFanhui;
+    private UserUtils utils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendantcall);
         ButterKnife.bind(this);
-        tvAddress.setText("山东");
-        UserUtils.SERVICE_ADDRESS=tvAddress.getText().toString();
+        utils.setService_address(tvAddress.getText().toString());
 
     }
 
@@ -85,19 +85,19 @@ public class AttendantCall extends Activity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     //上传订单
                                     RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/addOrder");
-                                    params.addBodyParameter("order_type", UserUtils.ORDER_TYPE);
-                                    params.addBodyParameter("brand", UserUtils.BRAND);
-                                    params.addBodyParameter("model", UserUtils.MODEL);
-                                    params.addBodyParameter("fault", UserUtils.FAULT);
-                                    params.addBodyParameter("fault_desc", UserUtils.FAULT_DESC);
-                                    params.addBodyParameter("category", UserUtils.CATEGORY);
-                                    params.addBodyParameter("image1", UserUtils.IMAGE1);
-                                    params.addBodyParameter("service_time", UserUtils.SERVICE_TIME);
-                                    params.addBodyParameter("service_address", UserUtils.SERVICE_ADDRESS);
-                                    params.addBodyParameter("custom_phone", UserUtils.CUSTOM_PHONE);
-                                    params.addBodyParameter("custom_name", UserUtils.CUSTOM_NAME);
-                                    params.addBodyParameter("custom_id", UserUtils.CUSTOM_ID);
-                                    params.addBodyParameter("address_id", UserUtils.ADDRESS_ID);
+//                                    params.addBodyParameter("order_type", UserUtils.ORDER_TYPE);
+//                                    params.addBodyParameter("brand", UserUtils.BRAND);
+//                                    params.addBodyParameter("model", UserUtils.MODEL);
+//                                    params.addBodyParameter("fault", UserUtils.FAULT);
+//                                    params.addBodyParameter("fault_desc", UserUtils.FAULT_DESC);
+//                                    params.addBodyParameter("category", UserUtils.CATEGORY);
+//                                    params.addBodyParameter("image1", UserUtils.IMAGE1);
+//                                    params.addBodyParameter("service_time", UserUtils.SERVICE_TIME);
+//                                    params.addBodyParameter("service_address", UserUtils.SERVICE_ADDRESS);
+//                                    params.addBodyParameter("custom_phone", UserUtils.CUSTOM_PHONE);
+//                                    params.addBodyParameter("custom_name", Y.USER.getAli_name());
+//                                    params.addBodyParameter("custom_id", UserUtils.CUSTOM_ID);
+//                                    params.addBodyParameter("address_id", UserUtils.ADDRESS_ID);
                                     Y.post(params, new Y.MyCommonCall<String>() {
                                         @Override
                                         public void onSuccess(String result) {
@@ -125,7 +125,7 @@ public class AttendantCall extends Activity {
                     @Override
                     public void onTimeSelect(Date date, View v) {//选中事件回调
                         tvServicetime.setText(getTime(date));
-                        UserUtils.SERVICE_TIME=tvServicetime.getText().toString();
+                      utils.setService_time(tvServicetime.getText().toString());
                     }
                 })
                         .build();

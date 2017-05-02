@@ -20,6 +20,12 @@ import java.util.List;
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.Myholder> {
     private Context context;
   private List <MyRVitem>list;
+
+    public RvAdapter(Context context, List<MyRVitem> list) {
+        this.context = context;
+        this.list = list;
+    }
+
     @Override
     public Myholder onCreateViewHolder(ViewGroup parent, int viewType) {
       View view= View.inflate(context, R.layout.tool_rvview,null);

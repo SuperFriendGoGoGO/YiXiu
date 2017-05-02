@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.adapter.RvAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -52,6 +56,8 @@ public class MyOrder extends Activity {
     Button btChakan2;
     @Bind(R.id.bt_quxiao2)
     Button btQuxiao2;
+    @Bind(R.id.rv_xiadan)
+    RecyclerView rvXiadan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +98,10 @@ public class MyOrder extends Activity {
             tvTime.setVisibility(View.GONE);
             btChongfa.setVisibility(View.GONE);
         }
+        rvXiadan.setLayoutManager(new LinearLayoutManager(this));
+        rvXiadan.setItemAnimator(new DefaultItemAnimator());
+      //  RvAdapter adapter=new RvAdapter();
+
     }
 
     @OnClick({R.id.iv_fanhui, R.id.iv_hard, R.id.tv_wei, R.id.tv_yi, R.id.tv_quxiao, R.id.bt_chakan1, R.id.bt_quxiao1, R.id.bt_chakan2, R.id.bt_quxiao2})

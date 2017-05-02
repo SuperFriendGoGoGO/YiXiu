@@ -17,7 +17,6 @@ import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.MobileBean;
 import com.zykj.yixiu.utils.Y;
 import com.zykj.yixiu.widget.MyTopBar;
-import com.zykj.yixiu.widget.UserUtils;
 
 import org.xutils.http.RequestParams;
 import org.xutils.x;

@@ -11,18 +11,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.Y;
-import com.zykj.yixiu.widget.UserUtils;
 
 import org.xutils.http.RequestParams;
-import org.xutils.image.ImageOptions;
-import org.xutils.x;
-
-import java.io.File;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

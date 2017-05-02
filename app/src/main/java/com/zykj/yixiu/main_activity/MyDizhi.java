@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.adapter.LVAdapter;
 import com.zykj.yixiu.utils.Address;
+import com.zykj.yixiu.utils.UserUtils;
 import com.zykj.yixiu.utils.Y;
 import com.zykj.yixiu.widget.MyTopBar;
 
@@ -112,6 +113,7 @@ public class MyDizhi extends Activity {
                 button2.setVisibility(View.VISIBLE);
                 break;
             case R.id.button:
+                //上传  添加地址
                 RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/addaddress");
                 params.addBodyParameter("name", etName.getText().toString());
                 params.addBodyParameter("address", etDizhi.getText().toString());
@@ -122,17 +124,15 @@ public class MyDizhi extends Activity {
                 params.addBodyParameter("lon", add.getLon() + "");
                 params.addBodyParameter("city_name", add.getCity_name());
                 params.addBodyParameter("city_code", add.getCity_code());
-                params.addBodyParameter("isdefault", 1 + "");
+                params.addBodyParameter("isdefault", 0 + "");
 
                 Y.post(params, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {
                             Y.t("设置成功----");
-                            Intent intent = new Intent(MyDizhi.this, Activity_Main.class);
+                            Intent intent = new Intent(MyDizhi.this, AttendantCall.class);
                             startActivity(intent);
-
-
                         } else {
                             Y.t("设置异常");
                         }

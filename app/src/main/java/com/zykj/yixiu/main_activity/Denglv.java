@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.utils.User;
+import com.zykj.yixiu.utils.UserUtils;
 import com.zykj.yixiu.utils.Y;
 
 import org.xutils.http.RequestParams;
@@ -71,7 +72,10 @@ public class Denglv extends Activity {
 
                                 Y.t("登陆成功----");
                             //跳转
+                            UserUtils utils=new UserUtils();
+                            utils.setCustom_id(JSON.parseObject(result).getString("user_id"));
                                 Intent intent=new Intent(Denglv.this,Activity_Main.class);
+                            intent.putExtra("utils",utils);
                                 startActivity(intent);
 
 

@@ -72,6 +72,8 @@ public class Activity_Main extends Activity {
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
         List images = new ArrayList();
+        Intent intent2=getIntent();
+        utils = (UserUtils) intent2.getSerializableExtra("utils");
         intent.putExtra("utils",utils);
         for (int i = 0; i < 100; i++) {
             images.add(R.mipmap.u40);

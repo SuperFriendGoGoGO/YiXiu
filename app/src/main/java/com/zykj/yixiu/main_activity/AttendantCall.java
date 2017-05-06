@@ -66,13 +66,9 @@ public class AttendantCall extends Activity {
 
     }
 
-    @OnClick({R.id.im_servicetime, R.id.iv_address, R.id.bt_service, R.id.ll_time, R.id.ll_address, R.id.iv_fanhui})
+    @OnClick({R.id.bt_service, R.id.ll_time, R.id.ll_address, R.id.iv_fanhui})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.im_servicetime:
-                break;
-            case R.id.iv_address:
-                break;
             case R.id.bt_service:
                 //判断 控件内容是否为空
                 if (!tvAddress.getText().toString().isEmpty() && !tvServicetime.getText().toString().isEmpty()) {
@@ -87,19 +83,19 @@ public class AttendantCall extends Activity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     //上传订单
                                     RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/addOrder");
-//                                    params.addBodyParameter("order_type", UserUtils.ORDER_TYPE);
-//                                    params.addBodyParameter("brand", UserUtils.BRAND);
-//                                    params.addBodyParameter("model", UserUtils.MODEL);
-//                                    params.addBodyParameter("fault", UserUtils.FAULT);
-//                                    params.addBodyParameter("fault_desc", UserUtils.FAULT_DESC);
-//                                    params.addBodyParameter("category", UserUtils.CATEGORY);
-//                                    params.addBodyParameter("image1", UserUtils.IMAGE1);
-//                                    params.addBodyParameter("service_time", UserUtils.SERVICE_TIME);
-//                                    params.addBodyParameter("service_address", UserUtils.SERVICE_ADDRESS);
-//                                    params.addBodyParameter("custom_phone", UserUtils.CUSTOM_PHONE);
-//                                    params.addBodyParameter("custom_name", Y.USER.getAli_name());
-//                                    params.addBodyParameter("custom_id", UserUtils.CUSTOM_ID);
-//                                    params.addBodyParameter("address_id", UserUtils.ADDRESS_ID);
+                                    params.addBodyParameter("order_type", utils.getOrder_type());
+                                    params.addBodyParameter("brand", utils.getBrand());
+                                    params.addBodyParameter("model",utils.getModel());
+                                    params.addBodyParameter("fault", utils.getFault());
+                                    params.addBodyParameter("fault_desc",utils.getFault_desc());
+                                    params.addBodyParameter("category", utils.getCategory());
+                                    params.addBodyParameter("image1",utils.getImage1());
+                                    params.addBodyParameter("service_time", utils.getService_time());
+                                    params.addBodyParameter("service_address", utils.getService_address());
+                                    params.addBodyParameter("custom_phone", utils.getCustom_phone());
+                                    params.addBodyParameter("custom_name", Y.USER.getAli_name());
+                                    params.addBodyParameter("custom_id", Y.USER.getUser_id()+"");
+                                    params.addBodyParameter("address_id", utils.getAddress_id());
                                     Y.post(params, new Y.MyCommonCall<String>() {
                                         @Override
                                         public void onSuccess(String result) {

@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.adapter.LVAdapter;
 import com.zykj.yixiu.utils.Address;
@@ -119,6 +120,7 @@ public class MyDizhi extends Activity {
                 //上传  添加地址
                 utils.setCustom_name(etName.getText().toString());
                 utils.setCustom_phone(etNumber.getText().toString());
+
                 RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/addaddress");
                 params.addBodyParameter("name", etName.getText().toString());
                 params.addBodyParameter("address", etDizhi.getText().toString());
@@ -136,8 +138,10 @@ public class MyDizhi extends Activity {
                     public void onSuccess(String result) {
                         if (Y.getRespCode(result)) {
                             Y.t("设置成功----");
+                            utils.setAddress_id(JSON.parseObject(result).getString("address_id"));
                             Intent intent = new Intent(MyDizhi.this, AttendantCall.class);
-                            startActivity(intent);
+                            intent.putExtra("utils",utils);
+                           startActivityForResult(intent,110);
                         } else {
                             Y.t("设置异常");
                         }

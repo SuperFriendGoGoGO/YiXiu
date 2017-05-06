@@ -11,7 +11,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.adapter.RvAdapter;
+import com.zykj.yixiu.utils.ChaDingDan;
+import com.zykj.yixiu.utils.Y;
+import com.zykj.yixiu.widget.MyRVitem;
+
+import org.json.JSONObject;
+import org.xutils.http.RequestParams;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -40,6 +51,7 @@ public class MyOrder extends Activity {
     ImageView ivQuxiqao;
     @Bind(R.id.rv_xiadan)
     RecyclerView rvXiadan;
+    private List <MyRVitem>list=new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +87,27 @@ public class MyOrder extends Activity {
         }
         rvXiadan.setLayoutManager(new LinearLayoutManager(this));
         rvXiadan.setItemAnimator(new DefaultItemAnimator());
-        //  RvAdapter adapter=new RvAdapter();
+         // RvAdapter adapter=new RvAdapter();
+
+    }
+    public  void setpost(int i){
+        RequestParams params = new RequestParams("http://221.207.184.124:7071/yxg/findOrderByState");
+        params.addBodyParameter("custom_id", Y.USER.getUser_id()+"");
+        params.addBodyParameter("order_state",i+"");
+        Y.post(params, new Y.MyCommonCall<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Y.t("设置成功----");
+                ChaDingDan dingDan= (ChaDingDan) JSON.parseArray(Y.getData(result),ChaDingDan.class);
+                for (int j = 0; j <list.size() ; j++) {
+                    list.get(j).setTv_zhonglei(dingDan.getOrder_type());
+                    list.get(j).setTv_shijian(dingDan.getService_time());
+                    list.get(j).setTv_dizhi(dingDan.getService_address());
+                    list.get(j).setTv_time(dingDan.getAddtime());
+                }
+            }
+        });
+
 
     }
 

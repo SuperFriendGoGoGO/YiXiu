@@ -36,7 +36,7 @@ public class LVAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return list;
+        return list.get(position);
     }
 
     @Override

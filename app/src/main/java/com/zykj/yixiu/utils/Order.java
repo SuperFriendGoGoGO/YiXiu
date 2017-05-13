@@ -3,14 +3,13 @@ package com.zykj.yixiu.utils;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by zykj on 2017/5/6.
+ * Created by zykj on 2017/5/13.
  */
 
-public class ChaDingDan {
+public class Order {
+
     /**
      * model :
-     * engineer_id :
-     * order_state : 1
      * class :
      * service_address :
      * fault :
@@ -29,7 +28,7 @@ public class ChaDingDan {
      * fault_desc :
      * image3 :
      * custom_phone :
-     * order_type : 1
+     * order_type :
      * region : 香坊区
      * lat : 45.111
      * lon : 经度
@@ -38,8 +37,6 @@ public class ChaDingDan {
      */
 
     private String model;
-    private String engineer_id;
-    private int order_state;
     @SerializedName("class")
     private String classX;
     private String service_address;
@@ -72,22 +69,6 @@ public class ChaDingDan {
 
     public void setModel(String model) {
         this.model = model;
-    }
-
-    public String getEngineer_id() {
-        return engineer_id;
-    }
-
-    public void setEngineer_id(String engineer_id) {
-        this.engineer_id = engineer_id;
-    }
-
-    public int getOrder_state() {
-        return order_state;
-    }
-
-    public void setOrder_state(int order_state) {
-        this.order_state = order_state;
     }
 
     public String getClassX() {
@@ -281,35 +262,4 @@ public class ChaDingDan {
     public void setCity_code(String city_code) {
         this.city_code = city_code;
     }
-
-//    {
-//        "model": "",  //型号
-//            "engineer_id": "",//工程师ID
-//            "order_state": 1,   //订单状态:1,4,5,6为未完成,2为已完成,3为已取消//1刚发布的订单 ,4确认订单,5已支付,6已接单
-//            "class": "",    //类型
-//            "service_address": "", //服务地址
-//            "fault": "",    //故障点
-//            "custom_id": 2,     //客户id
-//            "custom_name": "",  //客户名
-//            "id": 1,            //订单ID
-//            "service_time": "", //服务时间
-//            "addtime": "",      //添加时间
-//            "image2": "",       //图片二
-//            "price": "",        //维修金额
-//            "image1": "",       //图片一
-//            "pay_type": "",     //支付类型
-//            "address_id": "",   //客户关联地址id
-//            "isdel": 0,         //是否已删除
-//            "brand": "",        //品牌
-//            "fault_desc": "",   //故障描述
-//            "image3": "",       //图片三
-//            "custom_phone": "", //客户电话
-//            "order_type": 1     //订单类型
-//        "region":"香坊区"             //区
-//        "lat":"45.111"        //纬度
-//        "lon":"经度"        //经度
-//        "city_name":"哈尔滨市"//城市名
-//        "city_code":"48"    //城市编码
-//    }
-
 }

@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.utils.Address;
+import com.zykj.yixiu.utils.Order;
 import com.zykj.yixiu.widget.MyRVitem;
 
 import java.util.List;
@@ -19,9 +21,9 @@ import java.util.List;
 
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.Myholder> {
     private Context context;
-  private List <MyRVitem>list;
+  private List <Order>list;
 
-    public RvAdapter(Context context, List<MyRVitem> list) {
+    public RvAdapter(Context context, List<Order> list) {
         this.context = context;
         this.list = list;
     }
@@ -35,10 +37,12 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.Myholder> {
 
     @Override
     public void onBindViewHolder(Myholder holder, final int position) {
-        holder.tv_zhonglei.setText(list.get(position).getTv_zhonglei());
-        holder.tv_address.setText(list.get(position).getTv_dizhi());
-        holder.tv_time.setText(list.get(position).getTv_time());
-        holder.tv_time2.setText(list.get(position).getTv_shijian());
+     Order order=list.get(position);
+        holder.tv_zhonglei.setText(order.getOrder_type());
+        holder.tv_address.setText(order.getCity_name()+order.getRegion());
+        holder.tv_time.setText(order.getService_time());
+        holder.tv_time2.setText(order.getAddtime());
+
         holder.bt_xiangqing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,3 +101,4 @@ public interface bt_xiangqingOnClickListener{
         }
     }
 }
+
